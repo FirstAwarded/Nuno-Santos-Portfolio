@@ -31,7 +31,7 @@ export const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="text-xl font-medium">
-            Pedro
+            Nuno
           </div>
 
           {/* Desktop Navigation */}

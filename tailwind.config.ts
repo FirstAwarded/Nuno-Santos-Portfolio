@@ -122,15 +122,15 @@ export default {
 				},
 				'noise': {
 					'0%': { transform: 'translate(0)' },
-					'10%': { transform: 'translate(-1px, -1px)' },
-					'20%': { transform: 'translate(1px, -1px)' },
-					'30%': { transform: 'translate(-1px, 1px)' },
-					'40%': { transform: 'translate(1px, 1px)' },
-					'50%': { transform: 'translate(-1px, -1px)' },
-					'60%': { transform: 'translate(1px, -1px)' },
-					'70%': { transform: 'translate(-1px, 1px)' },
-					'80%': { transform: 'translate(1px, 1px)' },
-					'90%': { transform: 'translate(-1px, -1px)' },
+					'10%': { transform: 'translate(-0.5px, -0.5px)' },
+					'20%': { transform: 'translate(0.5px, -0.5px)' },
+					'30%': { transform: 'translate(-0.5px, 0.5px)' },
+					'40%': { transform: 'translate(0.5px, 0.5px)' },
+					'50%': { transform: 'translate(-0.5px, -0.5px)' },
+					'60%': { transform: 'translate(0.5px, -0.5px)' },
+					'70%': { transform: 'translate(-0.5px, 0.5px)' },
+					'80%': { transform: 'translate(0.5px, 0.5px)' },
+					'90%': { transform: 'translate(-0.5px, -0.5px)' },
 					'100%': { transform: 'translate(0)' }
 				},
 				'glow': {
@@ -147,7 +147,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
-				'noise': 'noise 0.3s infinite',
+				'noise': 'noise 0.2s infinite',
 				'glow': 'glow 2s ease-in-out infinite alternate',
 				'float': 'float 3s ease-in-out infinite'
 			}

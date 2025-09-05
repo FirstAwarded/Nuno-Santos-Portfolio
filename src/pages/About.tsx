@@ -44,7 +44,7 @@ export default function About() {
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in-up">
             <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-6 animate-glow" />
-            <h1 className="text-4xl font-light mb-4">About Pedro</h1>
+            <h1 className="text-4xl font-light mb-4">About Nuno</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A curious designer who believes the best solutions come from understanding 
               people, not just problems.
@@ -159,13 +159,13 @@ export default function About() {
                   Let's Connect
                 </h3>
                 <div className="space-y-2 text-sm">
-                  <a href="mailto:pedro@example.com" className="text-primary hover:underline block">
-                    pedro@example.com
+                  <a href="mailto:nuno@example.com" className="text-primary hover:underline block">
+                    nuno@example.com
                   </a>
-                  <a href="https://linkedin.com/in/pedro" className="text-primary hover:underline block">
+                  <a href="https://linkedin.com/in/nuno" className="text-primary hover:underline block">
                     LinkedIn
                   </a>
-                  <a href="https://dribbble.com/pedro" className="text-primary hover:underline block">
+                  <a href="https://dribbble.com/nuno" className="text-primary hover:underline block">
                     Dribbble
                   </a>
                 </div>

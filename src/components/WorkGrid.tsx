@@ -115,6 +115,11 @@ export const WorkGrid = () => {
                 key={item.id}
                 className="work-card group cursor-pointer"
                 style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => {
+                  if (item.id === 'uber-concept') {
+                    window.location.href = '/work/uber-train-integration';
+                  }
+                }}
               >
                 {/* Image Placeholder */}
                 <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg mb-4 flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500">

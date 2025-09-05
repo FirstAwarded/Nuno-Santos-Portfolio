@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Pedro's Portfolio Design System - Apple-inspired minimalism with sophisticated interactions */
+/* Nuno's Portfolio Design System - Apple-inspired minimalism with sophisticated interactions */
 
 @layer base {
   :root {
@@ -183,7 +183,7 @@
     @apply hover:scale-105 active:scale-95;
   }
   
-  /* Noise effect for text */
+  /* Noise effect for text - more subtle */
   .noise-text {
     position: relative;
   }
@@ -193,8 +193,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    animation: noise 0.3s infinite;
-    opacity: 0.8;
+    animation: noise 0.2s infinite;
+    opacity: 0.4;
+    pointer-events: none;
   }
 }
 
