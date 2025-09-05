@@ -1,15 +1,14 @@
 import { Navigation } from '@/components/Navigation';
-import { Hero } from '@/components/Hero';
 import { WorkGrid } from '@/components/WorkGrid';
 
-const Index = () => {
+export default function Work() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <Hero />
-      <WorkGrid />
+      
+      <main className="pt-24">
+        <WorkGrid />
+      </main>
     </div>
   );
-};
-
-export default Index;
+}
