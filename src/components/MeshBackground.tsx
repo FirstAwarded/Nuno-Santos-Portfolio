@@ -102,8 +102,12 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
   return (
     <canvas
       ref={canvasRef}
-      className={`absolute inset-0 pointer-events-none ${className}`}
-      style={{ mixBlendMode: theme === 'dark' ? 'screen' : 'multiply' }}
+      className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
+      style={{ 
+        mixBlendMode: theme === 'dark' ? 'screen' : 'multiply',
+        width: '100%',
+        height: '100%'
+      }}
     />
   );
 };

@@ -10,9 +10,9 @@ export const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
       {/* Animated Mesh Background */}
-      <MeshBackground />
+      <MeshBackground className="w-full h-full" />
       
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background/90" />
