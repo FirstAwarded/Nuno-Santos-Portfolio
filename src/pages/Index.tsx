@@ -1,12 +1,12 @@
 import { Navigation } from '@/components/Navigation';
-import { Hero } from '@/components/Hero';
+import LandingHero from '@/components/LandingHero';
 import { WorkGrid } from '@/components/WorkGrid';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <Hero />
+      <LandingHero />
       <WorkGrid />
     </div>
   );
