@@ -8,11 +8,11 @@ interface MeshBackgroundProps {
 export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
-  
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -23,10 +23,26 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
       const rect = canvas.getBoundingClientRect();
       canvas.width = rect.width * window.devicePixelRatio;
       canvas.height = rect.height * window.devicePixelRatio;
+      ctx.setTransform(1, 0, 0, 1, 0, 0); // reset
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
       canvas.style.width = rect.width + 'px';
       canvas.style.height = rect.height + 'px';
     };
+
+
+    const colorsDark = [
+      'rgba(96,105,255,0.35)',
+      'rgba(168,85,247,0.3)',
+      'rgba(236,72,153,0.25)',
+      'rgba(14,165,233,0.2)'
+    ];
+    const colorsLight = [
+      'rgba(96,105,255,0.15)',
+      'rgba(168,85,247,0.12)',
+      'rgba(236,72,153,0.12)',
+      'rgba(14,165,233,0.1)'
+    ];
+    const palette = theme === 'dark' ? colorsDark : colorsLight;
 
     const createGradient = (x1: number, y1: number, x2: number, y2: number, radius: number) => {
       const gradient = ctx.createRadialGradient(x1, y1, 0, x2, y2, radius);
@@ -52,13 +68,24 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
       return gradient;
     };
 
+
     const animate = () => {
-      time += 0.01;
-      
+      time += 0.003; // slower
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
-      
+
       ctx.clearRect(0, 0, width, height);
+
+      ctx.globalCompositeOperation = 'lighter';
+
+      for (let i = 0; i < palette.length; i++) {
+        const x = width / 2 + Math.sin(time + i) * (200 + i * 50);
+        const y = height / 2 + Math.cos(time * 0.7 + i) * (150 + i * 40);
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, 400);
+        gradient.addColorStop(0, palette[i]);
+        gradient.addColorStop(1, 'transparent');
+
+
       
       // Create multiple organic mesh gradients
       for (let i = 0; i < 5; i++) {
@@ -71,9 +98,14 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
         
         const gradient = createGradient(x, y, x2, y2, radius);
         ctx.globalCompositeOperation = (i === 0 ? 'source-over' : 'multiply') as GlobalCompositeOperation;
+
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
       }
+
+
+      ctx.globalCompositeOperation = 'source-over';
+
       
       ctx.globalCompositeOperation = 'source-over' as GlobalCompositeOperation;
       
@@ -100,17 +132,10 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
     resizeCanvas();
     animate();
 
-    const handleResize = () => {
-      resizeCanvas();
-    };
-
-    window.addEventListener('resize', handleResize);
-    
+    window.addEventListener('resize', resizeCanvas);
     return () => {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-      }
-      window.removeEventListener('resize', handleResize);
+      if (animationId) cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resizeCanvas);
     };
   }, [theme]);
 
@@ -118,8 +143,7 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
     <canvas
       ref={canvasRef}
       className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
-      style={{ 
-        mixBlendMode: theme === 'dark' ? 'screen' : 'multiply',
+      style={{
         width: '100%',
         height: '100%'
       }}
