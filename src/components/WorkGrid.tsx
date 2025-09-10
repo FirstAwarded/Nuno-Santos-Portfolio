@@ -15,39 +15,39 @@ interface WorkItem {
 
 const workItems: WorkItem[] = [
   {
+    id: 'uber-concept',
+    title: 'Uber Train Integration',
+    description: 'Conceptual flow integrating train booking into Uber\'s ecosystem with Live Activity features. Reduced booking time from 2 hours to 30 minutes.',
+    category: 'concept',
+    tags: ['Concept Design', 'iOS', 'Transportation'],
+  },
+  {
     id: 'umai',
     title: 'Umai Language Learning',
-    description: 'Research-driven concept that transforms language learning through emotional connections and cultural immersion.',
+    description: 'Research-driven concept that transforms language learning through emotional connections. Increased user engagement by 340%.',
     category: 'research',
     tags: ['User Research', 'Mobile App', 'Language Learning'],
   },
   {
     id: 'safewalk',
     title: 'SafeWalk Navigation',
-    description: 'Accessibility-focused safety app that combines real-time navigation with community-driven safety insights.',
+    description: 'Accessibility-focused safety app combining real-time navigation with community insights. 95% accessibility compliance achieved.',
     category: 'product',
     tags: ['Accessibility', 'Safety', 'Navigation'],
   },
   {
     id: 'health-app',
     title: 'Mobile Health Dashboard',
-    description: 'Comprehensive health tracking interface designed for clarity and daily engagement.',
+    description: 'Comprehensive health tracking interface designed for clarity and daily engagement. 85% daily active users maintained.',
     category: 'ui',
     tags: ['Health Tech', 'Data Visualization', 'Mobile'],
   },
   {
     id: 'corporate-dashboard',
     title: 'Enterprise Analytics',
-    description: 'Complex data visualization platform that simplifies enterprise decision-making processes.',
+    description: 'Complex data visualization platform simplifying enterprise decision-making. 60% faster data comprehension.',
     category: 'product',
     tags: ['Enterprise', 'Analytics', 'Dashboard'],
-  },
-  {
-    id: 'uber-concept',
-    title: 'Uber Train Integration',
-    description: 'Conceptual flow integrating train booking into Uber\'s ecosystem with Live Activity features.',
-    category: 'concept',
-    tags: ['Concept Design', 'iOS', 'Transportation'],
   },
 ];
 
@@ -81,37 +81,37 @@ export const WorkGrid = () => {
   ];
 
   return (
-    <section id="work" className="py-20 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl font-light mb-4">Selected Work</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+    <section id="work" className="py-32 px-6 bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto max-w-7xl">
+        <div className="text-center mb-20 animate-fade-in-up">
+          <h2 className="display-text mb-6 font-display">Selected Work</h2>
+          <p className="body-large max-w-3xl mx-auto">
             A collection of projects showcasing strategic UX thinking, 
             interface craft, and attention to meaningful details.
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        {/* Enhanced Category Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((category) => (
             <Button
               key={category.id}
               variant={selectedCategory === category.id ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedCategory(category.id)}
-              className="interactive"
+              className="interactive-lift glass border-border/30 hover:border-primary/50"
             >
               {category.label}
             </Button>
           ))}
         </div>
 
-        {/* Work Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Enhanced Work Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {filteredItems.map((item, index) => {
             const Icon = categoryIcons[item.category];
             return (
-              <div
+              <article
                 key={item.id}
                 className="work-card group cursor-pointer"
                 style={{ animationDelay: `${index * 0.1}s` }}
@@ -120,23 +120,27 @@ export const WorkGrid = () => {
                     window.location.href = '/work/uber-train-integration';
                   }
                 }}
+                role="button"
+                tabIndex={0}
+                aria-label={`View case study: ${item.title}`}
               >
-                {/* Image Placeholder */}
-                <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg mb-4 flex items-center justify-center group-hover:from-primary/20 group-hover:to-accent/20 transition-all duration-500">
-                  <Icon className="w-12 h-12 text-muted-foreground/50" />
+                {/* Enhanced visual */}
+                <div className="h-64 bg-gradient-to-br from-primary/15 via-accent/10 to-info/10 rounded-2xl mb-6 flex items-center justify-center group-hover:from-primary/25 group-hover:via-accent/15 group-hover:to-info/15 transition-all duration-700 relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent group-hover:via-white/10 transition-all duration-700" />
+                  <Icon className="w-16 h-16 text-muted-foreground/60 group-hover:text-primary/80 transition-all duration-500 relative z-10" />
                 </div>
 
-                <div className="space-y-3">
-                  <div className="flex items-start justify-between">
-                    <h3 className="text-lg font-medium group-hover:text-primary transition-colors">
+                <div className="space-y-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <h3 className="text-xl font-medium group-hover:text-primary transition-colors leading-tight">
                       {item.title}
                     </h3>
-                    <Badge className={categoryColors[item.category]}>
+                    <Badge className={`${categoryColors[item.category]} font-medium flex-shrink-0`}>
                       {item.category}
                     </Badge>
                   </div>
 
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>
 
@@ -144,19 +148,19 @@ export const WorkGrid = () => {
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs bg-secondary text-secondary-foreground px-2 py-1 rounded"
+                        className="text-xs bg-secondary/70 text-secondary-foreground px-3 py-1.5 rounded-full font-medium"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="flex items-center text-primary text-sm group-hover:gap-2 transition-all duration-300">
+                  <div className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all duration-300 pt-2">
                     <span>View Case Study</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

@@ -20,13 +20,21 @@ export default {
 		extend: {
 			fontFamily: {
 				system: [
+					'system-ui',
 					'-apple-system',
 					'BlinkMacSystemFont',
-					'San Francisco',
-					'Segoe UI',
+					'"SF Pro Display"',
+					'"Segoe UI"',
 					'Roboto',
-					'Helvetica Neue',
+					'"Helvetica Neue"',
 					'Arial',
+					'sans-serif'
+				],
+				display: [
+					'"SF Pro Display"',
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
 					'sans-serif'
 				]
 			},
@@ -67,6 +75,7 @@ export default {
 				},
 				success: 'hsl(var(--success))',
 				warning: 'hsl(var(--warning))',
+				info: 'hsl(var(--info))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -120,18 +129,21 @@ export default {
 						transform: 'translateX(0)'
 					}
 				},
-				'noise': {
+				'subtle-noise': {
 					'0%': { transform: 'translate(0)' },
-					'10%': { transform: 'translate(-0.5px, -0.5px)' },
-					'20%': { transform: 'translate(0.5px, -0.5px)' },
-					'30%': { transform: 'translate(-0.5px, 0.5px)' },
-					'40%': { transform: 'translate(0.5px, 0.5px)' },
-					'50%': { transform: 'translate(-0.5px, -0.5px)' },
-					'60%': { transform: 'translate(0.5px, -0.5px)' },
-					'70%': { transform: 'translate(-0.5px, 0.5px)' },
-					'80%': { transform: 'translate(0.5px, 0.5px)' },
-					'90%': { transform: 'translate(-0.5px, -0.5px)' },
+					'20%': { transform: 'translate(-0.3px, -0.2px)' },
+					'40%': { transform: 'translate(0.2px, -0.3px)' },
+					'60%': { transform: 'translate(-0.2px, 0.3px)' },
+					'80%': { transform: 'translate(0.3px, 0.2px)' },
 					'100%': { transform: 'translate(0)' }
+				},
+				'count-up': {
+					'from': { opacity: '0', transform: 'translateY(10px)' },
+					'to': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'pulse-glow': {
+					'0%, 100%': { boxShadow: 'var(--shadow-glow)' },
+					'50%': { boxShadow: '0 0 80px hsl(var(--primary) / 0.4)' }
 				},
 				'glow': {
 					'0%, 100%': { boxShadow: 'var(--shadow-glow)' },
@@ -147,7 +159,9 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in-up': 'fade-in-up 0.6s ease-out',
 				'slide-in-right': 'slide-in-right 0.5s ease-out',
-				'noise': 'noise 0.2s infinite',
+				'subtle-noise': 'subtle-noise 0.15s infinite',
+				'count-up': 'count-up 0.6s ease-out',
+				'pulse-glow': 'pulse-glow 2s ease-in-out infinite alternate',
 				'glow': 'glow 2s ease-in-out infinite alternate',
 				'float': 'float 3s ease-in-out infinite'
 			}

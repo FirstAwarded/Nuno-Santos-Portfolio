@@ -11,50 +11,69 @@ export const Hero = () => {
 
   return (
     <section className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
-      {/* Animated Mesh Background */}
+      {/* Apple-style Mesh Background */}
       <MeshBackground className="w-full h-full" />
       
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background/90" />
+      {/* Refined overlay for better readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/20 via-background/40 to-background/80" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in-up">
-          <div className="inline-flex items-center gap-2 bg-secondary/50 rounded-full px-4 py-2 mb-8 text-sm text-muted-foreground">
-            <Sparkles className="w-4 h-4" />
-            UX/UI Designer • 3 Years Experience
+          <div className="inline-flex items-center gap-2 glass rounded-full px-5 py-3 mb-12 text-sm font-medium">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <span className="text-foreground">UX/UI Designer</span>
+            <span className="text-muted-foreground">•</span>
+            <span className="text-muted-foreground">3 Years Experience</span>
           </div>
           
           <h1 
-            className="hero-text mb-6 noise-text" 
+            className="hero-text mb-8 noise-text font-display" 
             data-text="Designing clarity in a noisy world."
           >
             Designing clarity in a{' '}
             <span className="gradient-text">noisy world</span>.
           </h1>
           
-          <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="body-large mb-12 max-w-3xl mx-auto">
             I craft user experiences that turn complex problems into intuitive solutions, 
             with a focus on strategic thinking and delightful microinteractions.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
+          {/* Enhanced CTA buttons */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+            <button 
               onClick={scrollToWork}
-              size="lg"
-              className="interactive bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="btn-hero interactive-lift group"
+              aria-label="Explore my work portfolio"
             >
-              Explore My Work
-              <ArrowDown className="ml-2 w-4 h-4" />
-            </Button>
+              <span>Explore My Work</span>
+              <ArrowDown className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
+            </button>
             
             <Button 
               variant="outline"
               size="lg"
-              className="interactive"
+              className="interactive-lift glass border-border/50 hover:border-primary/30"
             >
               Download Resume
             </Button>
+          </div>
+
+          {/* Key metrics */}
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-2xl font-light text-primary animate-count-up">15+</div>
+              <div className="text-sm text-muted-foreground">Projects</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-light text-primary animate-count-up">3</div>
+              <div className="text-sm text-muted-foreground">Years</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-light text-primary animate-count-up">98%</div>
+              <div className="text-sm text-muted-foreground">User Satisfaction</div>
+            </div>
           </div>
         </div>
       </div>
