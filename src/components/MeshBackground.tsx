@@ -1,13 +1,18 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 
-const MeshBackground = ({ className = '' }: { className?: string }) => {
+interface MeshBackgroundProps {
+  className?: string;
+}
+
+export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const { theme } = useTheme();
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
@@ -28,21 +33,21 @@ const MeshBackground = ({ className = '' }: { className?: string }) => {
       'rgba(96,105,255,0.35)',
       'rgba(168,85,247,0.3)',
       'rgba(236,72,153,0.25)',
-      'rgba(14,165,233,0.2)',
+      'rgba(14,165,233,0.2)'
     ];
     const colorsLight = [
       'rgba(96,105,255,0.15)',
       'rgba(168,85,247,0.12)',
       'rgba(236,72,153,0.12)',
-      'rgba(14,165,233,0.1)',
+      'rgba(14,165,233,0.1)'
     ];
     const palette = theme === 'dark' ? colorsDark : colorsLight;
 
     const animate = () => {
-      time += 0.01; // faster animation
+      time += 0.003;
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
-      const scale = Math.min(width, height) / 800;
+      const scale = Math.min(width, height) / 800; // responsive factor
 
       ctx.clearRect(0, 0, width, height);
       ctx.globalCompositeOperation = 'lighter';
@@ -50,6 +55,7 @@ const MeshBackground = ({ className = '' }: { className?: string }) => {
       for (let i = 0; i < palette.length; i++) {
         const offset = 150 * scale + i * 40 * scale;
         const radius = 350 * scale + i * 50 * scale;
+
         const x = width / 2 + Math.sin(time + i) * offset * 1.2;
         const y = height / 2 + Math.cos(time * 0.7 + i) * offset;
 
@@ -79,9 +85,10 @@ const MeshBackground = ({ className = '' }: { className?: string }) => {
     <canvas
       ref={canvasRef}
       className={`absolute inset-0 w-full h-full pointer-events-none ${className}`}
-      style={{ width: '100%', height: '100%' }}
+      style={{
+        width: '100%',
+        height: '100%'
+      }}
     />
   );
 };
-
-export default MeshBackground;
