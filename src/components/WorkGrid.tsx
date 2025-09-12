@@ -53,6 +53,13 @@ const workItems: WorkItem[] = [
     description: 'Secure financial tools with enhanced accessibility',
     category: 'web',
     tags: ['Fintech', 'Security', 'Accessibility']
+  },
+  {
+    id: 'oart',
+    title: 'OART Case Study',
+    description: 'Enterprise workflow redesign',
+    category: 'web',
+    tags: ['Enterprise', 'Workflows', 'Case Study']
   }
 ];
 

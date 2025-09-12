@@ -9,6 +9,8 @@ import Work from "./pages/Work";
 import CaseStudy from "./pages/CaseStudy";
 import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
+import Oart from "./pages/Oart";
+
 
 const queryClient = new QueryClient();
 
@@ -24,6 +26,7 @@ const App = () => (
           <Route path="/work/uber-train-integration" element={<CaseStudy />} />
           <Route path="/about" element={<About />} />
           <Route path="/components" element={<Components />} />
+          <Route path="/work/oart" element={<Oart />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
