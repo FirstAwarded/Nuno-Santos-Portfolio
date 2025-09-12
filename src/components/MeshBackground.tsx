@@ -59,7 +59,7 @@ export const MeshBackground = ({ className = '' }: MeshBackgroundProps) => {
     const palette = theme === 'dark' ? colorsDark : colorsLight;
 
     const animate = () => {
-      time += 0.0015; // Slower, breathing motion (12-16s loop)
+      time += 0.001; // Extended breathing motion (14-18s loop for restraint)
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
       const scale = Math.min(width, height) / 1000;

@@ -8,10 +8,11 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <CaseStudyTeasers />
-      <div id="work">
+      {/* Selected Work section positioned to peek above fold */}
+      <div id="work" className="relative -mt-20 pt-20">
         <WorkGrid />
       </div>
+      <CaseStudyTeasers />
     </div>
   );
 };

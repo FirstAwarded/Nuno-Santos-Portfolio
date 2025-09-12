@@ -7,62 +7,65 @@ interface WorkItem {
   id: string;
   title: string;
   description: string;
-  category: 'research' | 'ui' | 'product' | 'concept';
+  category: 'web' | 'mobile' | 'system';
   tags: string[];
-  image?: string;
-  link?: string;
 }
 
 const workItems: WorkItem[] = [
   {
-    id: 'uber-concept',
-    title: 'Uber Train Integration',
-    description: 'Conceptual flow integrating train booking into Uber\'s ecosystem with Live Activity features. Reduced booking time from 2 hours to 30 minutes.',
-    category: 'concept',
-    tags: ['Concept Design', 'iOS', 'Transportation'],
+    id: 'enterprise-platform',
+    title: 'Enterprise platform',
+    description: 'Six-figure savings through streamlined approval workflows',
+    category: 'web',
+    tags: ['Enterprise', 'Workflows', 'Efficiency']
   },
   {
-    id: 'umai',
-    title: 'Umai Language Learning',
-    description: 'Research-driven concept that transforms language learning through emotional connections. Increased user engagement by 340%.',
-    category: 'research',
-    tags: ['User Research', 'Mobile App', 'Language Learning'],
+    id: 'health-tooling',
+    title: 'Health tooling',
+    description: 'Patient-centered experience reducing onboarding friction',
+    category: 'mobile',
+    tags: ['Healthcare', 'Patient Care', 'Mobile']
   },
   {
-    id: 'safewalk',
-    title: 'SafeWalk Navigation',
-    description: 'Accessibility-focused safety app combining real-time navigation with community insights. 95% accessibility compliance achieved.',
-    category: 'product',
-    tags: ['Accessibility', 'Safety', 'Navigation'],
+    id: 'motion-prototype',
+    title: 'Motion prototype',
+    description: 'Live Activity system with seamless microinteractions',
+    category: 'system',
+    tags: ['Motion', 'Prototyping', 'iOS']
   },
   {
-    id: 'health-app',
-    title: 'Mobile Health Dashboard',
-    description: 'Comprehensive health tracking interface designed for clarity and daily engagement. 85% daily active users maintained.',
-    category: 'ui',
-    tags: ['Health Tech', 'Data Visualization', 'Mobile'],
+    id: 'data-visualization',
+    title: 'Data visualization',
+    description: 'Complex enterprise dashboards made intuitive',
+    category: 'web',
+    tags: ['Data Viz', 'Dashboard', 'Analytics']
   },
   {
-    id: 'corporate-dashboard',
-    title: 'Enterprise Analytics',
-    description: 'Complex data visualization platform simplifying enterprise decision-making. 60% faster data comprehension.',
-    category: 'product',
-    tags: ['Enterprise', 'Analytics', 'Dashboard'],
+    id: 'design-system',
+    title: 'Design system',
+    description: 'Scalable component library for rapid development',
+    category: 'system',
+    tags: ['Design System', 'Components', 'Scalability']
   },
+  {
+    id: 'fintech-platform',
+    title: 'Fintech platform',
+    description: 'Secure financial tools with enhanced accessibility',
+    category: 'web',
+    tags: ['Fintech', 'Security', 'Accessibility']
+  }
 ];
 
 const categoryIcons = {
-  research: Brain,
-  ui: Palette,
-  product: Zap,
-  concept: Search,
+  web: Zap,
+  mobile: Palette,
+  system: Brain,
 };
 
 const categoryColors = {
-  research: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-  ui: 'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-400',
-  product: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-  concept: 'bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400',
+  web: 'bg-primary text-primary-foreground',
+  mobile: 'bg-accent text-accent-foreground',
+  system: 'bg-info text-white',
 };
 
 export const WorkGrid = () => {
@@ -74,16 +77,20 @@ export const WorkGrid = () => {
 
   const categories = [
     { id: 'all', label: 'All Work' },
-    { id: 'research', label: 'Research-Heavy' },
-    { id: 'ui', label: 'UI-Focused' },
-    { id: 'product', label: 'Product Design' },
-    { id: 'concept', label: 'Conceptual' },
+    { id: 'web', label: 'Web' },
+    { id: 'mobile', label: 'Mobile' },
+    { id: 'system', label: 'System' },
   ];
 
+  const handleItemClick = (item: WorkItem) => {
+    // Future navigation logic
+    console.log('Navigate to:', item.id);
+  };
+
   return (
-    <section id="work" className="py-32 px-6 bg-gradient-to-b from-background to-muted/20">
+    <section className="py-20 px-6">
       <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-20 animate-fade-in-up">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="display-text mb-6 font-display">Selected Work</h2>
           <p className="body-large max-w-3xl mx-auto">
             A collection of projects showcasing strategic UX thinking, 
@@ -91,76 +98,65 @@ export const WorkGrid = () => {
           </p>
         </div>
 
-        {/* Enhanced Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {categories.map((category) => (
             <Button
               key={category.id}
               variant={selectedCategory === category.id ? "default" : "outline"}
               size="sm"
               onClick={() => setSelectedCategory(category.id)}
-              className="interactive-lift glass border-border/30 hover:border-primary/50"
+              className="transition-all duration-200 hover:scale-105"
             >
               {category.label}
             </Button>
           ))}
         </div>
 
-        {/* Enhanced Work Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        {/* Work Grid with mask reveal effect */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredItems.map((item, index) => {
             const Icon = categoryIcons[item.category];
+            const colorClass = categoryColors[item.category];
+            
             return (
-              <article
+              <div
                 key={item.id}
-                className="work-card group cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
-                onClick={() => {
-                  if (item.id === 'uber-concept') {
-                    window.location.href = '/work/uber-train-integration';
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-                aria-label={`View case study: ${item.title}`}
+                className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 hover:border-primary/30 cursor-pointer"
+                onClick={() => handleItemClick(item)}
               >
-                {/* Enhanced visual */}
-                <div className="h-64 bg-gradient-to-br from-primary/15 via-accent/10 to-info/10 rounded-2xl mb-6 flex items-center justify-center group-hover:from-primary/25 group-hover:via-accent/15 group-hover:to-info/15 transition-all duration-700 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent group-hover:via-white/10 transition-all duration-700" />
-                  <Icon className="w-16 h-16 text-muted-foreground/60 group-hover:text-primary/80 transition-all duration-500 relative z-10" />
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-xl font-medium group-hover:text-primary transition-colors leading-tight">
-                      {item.title}
-                    </h3>
-                    <Badge className={`${categoryColors[item.category]} font-medium flex-shrink-0`}>
+                {/* Mask reveal effect on hover - left to right wipe */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-accent/10 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300 ease-out" />
+                
+                <div className="relative p-8">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className={`p-3 rounded-2xl ${colorClass}`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${colorClass}`}>
                       {item.category}
-                    </Badge>
+                    </div>
                   </div>
-
-                  <p className="text-muted-foreground leading-relaxed">
+                  
+                  <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
                     {item.description}
                   </p>
-
+                  
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs bg-secondary/70 text-secondary-foreground px-3 py-1.5 rounded-full font-medium"
+                        className="px-3 py-1 bg-muted/50 rounded-full text-xs text-muted-foreground group-hover:bg-muted/70 transition-colors duration-300"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-
-                  <div className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all duration-300 pt-2">
-                    <span>View Case Study</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
-                  </div>
                 </div>
-              </article>
+              </div>
             );
           })}
         </div>
