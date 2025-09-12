@@ -1,5 +1,6 @@
 import { Navigation } from '@/components/Navigation';
 import { Hero } from '@/components/Hero';
+import { CaseStudyTeasers } from '@/components/CaseStudyTeasers';
 import { WorkGrid } from '@/components/WorkGrid';
 
 const Index = () => {
@@ -7,7 +8,10 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <WorkGrid />
+      <CaseStudyTeasers />
+      <div id="work">
+        <WorkGrid />
+      </div>
     </div>
   );
 };
