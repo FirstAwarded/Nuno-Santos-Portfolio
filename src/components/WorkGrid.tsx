@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ExternalLink, ArrowRight, Search, Palette, Brain, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -77,6 +78,7 @@ const categoryColors = {
 
 export const WorkGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const navigate = useNavigate();
 
   const filteredItems = selectedCategory === 'all' 
     ? workItems 
@@ -90,8 +92,12 @@ export const WorkGrid = () => {
   ];
 
   const handleItemClick = (item: WorkItem) => {
-    // Future navigation logic
-    console.log('Navigate to:', item.id);
+    if (item.id === 'oart') {
+      navigate('/work/oart');
+    } else {
+      // Future navigation logic for other items
+      console.log('Navigate to:', item.id);
+    }
   };
 
   return (
