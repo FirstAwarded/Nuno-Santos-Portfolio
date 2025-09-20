@@ -1,7 +1,7 @@
 import { Navigation } from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
-import { MapPin, Mail, Calendar, Heart, Book, Coffee } from 'lucide-react';
+import { MapPin, Mail, Calendar, Heart, Book, Coffee,Dumbbell } from 'lucide-react';
 
 export default function About() {
   const timeline = [
@@ -26,9 +26,9 @@ export default function About() {
   ];
 
   const currentlyLearning = [
-    'AI in Design Systems',
-    'Advanced Prototyping',
-    'Design Leadership',
+    'Interaction design and motion',
+    'Advance UXR methods',
+    'Storytelling for impact',
   ];
 
   const tools = [
@@ -58,18 +58,16 @@ export default function About() {
                 <h2 className="text-2xl font-light mb-4">Design Philosophy</h2>
                 <div className="prose text-muted-foreground space-y-4">
                   <p>
-                    I approach design as a conversation between user needs and business goals. 
-                    My process always starts with curiosity—understanding not just what users do, 
-                    but why they do it.
+                  I approach design as a conversation between user needs and business goals. I’m a product-minded service designer who lives where processes, people, and outcomes meet, turning ambiguity into clear flows and confident decisions.
                   </p>
                   <p>
-                    Over the past 3 years, I've learned that the most elegant solutions often 
-                    come from the smallest details. A well-timed microinteraction can communicate 
-                    more than a paragraph of text.
+                    My process starts with curiosity. I map the system, trace constraints, and ship thin slices early to learn fast. I care about outcomes, so I measure before and after to prove what changed.
                   </p>
                   <p>
-                    I'm particularly passionate about accessibility and inclusive design. 
-                    Great design should work for everyone, not just the majority.
+                    Over the past few years I’ve learned that small details unlock big wins. A well-timed microinteraction, a sharper empty state, or clearer guidance can move adoption more than a long explainer.
+                  </p>
+                  <p>
+                    I’m passionate about accessibility and inclusive design. Great products should work for everyone. My aim is simple: design experiences that feel obvious, scale reliably, and make their value visible in the numbers.
                   </p>
                 </div>
               </Card>
@@ -106,7 +104,7 @@ export default function About() {
                   <MapPin className="w-4 h-4" />
                   Location
                 </h3>
-                <p className="text-sm text-muted-foreground">San Francisco, CA</p>
+                <p className="text-sm text-muted-foreground">United Kingdom</p>
               </Card>
 
               <Card className="p-6">
@@ -135,23 +133,27 @@ export default function About() {
               </Card>
 
               <Card className="p-6">
-                <h3 className="font-medium mb-4 flex items-center gap-2">
-                  <Heart className="w-4 h-4" />
-                  Outside Design
-                </h3>
-                <div className="space-y-3 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Book className="w-4 h-4" />
-                    Reading design psychology
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Coffee className="w-4 h-4" />
-                    Third-wave coffee enthusiast
-                  </div>
-                  <div>🇪🇸 Spanish (native)</div>
-                  <div>🇺🇸 English (fluent)</div>
-                </div>
-              </Card>
+  <h3 className="font-medium mb-4 flex items-center gap-2">
+    <Heart className="w-4 h-4" />
+    Outside Design
+  </h3>
+  <div className="space-y-3 text-sm text-muted-foreground">
+    <div className="flex items-center gap-2">
+      <Dumbbell className="w-4 h-4" />
+      Strength training
+    </div>
+    <div className="flex items-center gap-2">
+      <Book className="w-4 h-4" />
+      Reading philosophy
+    </div>
+    <div className="flex items-center gap-2">
+      <Coffee className="w-4 h-4" />
+      Probably drinking too much coffee
+    </div>
+    <div>pt Portuguese (native)</div>
+    <div>🇺🇸 English (fluent)</div>
+  </div>
+</Card>
 
               <Card className="p-6">
                 <h3 className="font-medium mb-4 flex items-center gap-2">
