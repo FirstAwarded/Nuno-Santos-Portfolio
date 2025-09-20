@@ -36,7 +36,6 @@ const App = () => (
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
-    {/* Toast systems */}
     <Toaster />
     <Sonner />
   </QueryClientProvider>
