@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { motion, useInView } from 'framer-motion';
 
 // Import mockup images
 import oartMockup from '@/assets/oart-mockup.jpg';
@@ -112,6 +113,8 @@ const categoryColors = {
 export const WorkGrid = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
   const filteredItems = selectedCategory === 'all' 
     ? workItems 
@@ -134,56 +137,115 @@ export const WorkGrid = () => {
   };
 
   return (
-    <section className="py-20 px-6">
-      <div className="container mx-auto max-w-7xl">
-        <div className="text-center mb-16 animate-fade-in-up">
+    <section id="work" ref={ref} className="py-32 px-6 relative overflow-hidden">
+      {/* Subtle parallax background */}
+      <motion.div
+        className="absolute inset-0 opacity-5"
+        style={{
+          background: 'var(--gradient-mesh)',
+          filter: 'blur(100px)'
+        }}
+        animate={{ y: isInView ? [-20, 20] : 0 }}
+        transition={{ duration: 20, repeat: Infinity, repeatType: 'reverse', ease: 'linear' }}
+      />
+      
+      <div className="container mx-auto max-w-7xl relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="text-center mb-16"
+        >
           <h2 className="display-text mb-6 font-display">Selected Work</h2>
           <p className="body-large max-w-3xl mx-auto">
             A collection of projects showcasing strategic UX thinking, 
             interface craft, and attention to meaningful details.
           </p>
-        </div>
+        </motion.div>
 
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <Button
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+          className="flex flex-wrap justify-center gap-3 mb-12"
+        >
+          {categories.map((category, index) => (
+            <motion.div
               key={category.id}
-              variant={selectedCategory === category.id ? "default" : "outline"}
-              size="sm"
-              onClick={() => setSelectedCategory(category.id)}
-              className="transition-all duration-200 hover:scale-105"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
             >
-              {category.label}
-            </Button>
+              <Button
+                variant={selectedCategory === category.id ? "default" : "outline"}
+                size="sm"
+                onClick={() => setSelectedCategory(category.id)}
+                className="transition-all duration-200 hover:scale-105"
+              >
+                {category.label}
+              </Button>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Work Grid with image previews */}
+        {/* Work Grid with enhanced animations */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredItems.map((item, index) => {
             const colorClass = categoryColors[item.category];
             
             return (
-              <div
+              <motion.div
                 key={item.id}
-                className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:shadow-xl hover:-translate-y-2 transition-all duration-500 hover:border-primary/30 cursor-pointer"
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: 0.4 + index * 0.1, 
+                  ease: [0.25, 0.1, 0.25, 1] 
+                }}
+                whileHover={{ 
+                  y: -8,
+                  rotateX: 2,
+                  rotateY: 1,
+                  transition: { duration: 0.3 }
+                }}
+                className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:shadow-xl transition-all duration-500 hover:border-primary/30 cursor-pointer perspective-1000"
                 onClick={() => handleItemClick(item)}
+                style={{ 
+                  transformStyle: 'preserve-3d',
+                  perspective: '1000px'
+                }}
               >
-                {/* Image Preview */}
+                {/* Masked image reveal */}
                 <div className="relative h-48 overflow-hidden rounded-t-3xl">
+                  <motion.div
+                    className="absolute inset-0 bg-muted"
+                    initial={{ y: '100%' }}
+                    animate={isInView ? { y: '0%' } : {}}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: 0.6 + index * 0.1,
+                      ease: [0.25, 0.1, 0.25, 1]
+                    }}
+                  />
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                  />
                   
                   {/* Category Badge */}
                   <div className="absolute top-4 right-4">
-                    <div className={`px-3 py-1 rounded-full text-xs font-medium ${colorClass} backdrop-blur-sm`}>
+                    <motion.div 
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${colorClass} backdrop-blur-sm`}
+                      whileHover={{ scale: 1.05 }}
+                    >
                       {item.category}
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
                 
@@ -197,23 +259,27 @@ export const WorkGrid = () => {
                   
                   <div className="flex flex-wrap gap-2">
                     {item.tags.map((tag) => (
-                      <span
+                      <motion.span
                         key={tag}
                         className="px-2 py-1 bg-muted/50 rounded-full text-xs text-muted-foreground group-hover:bg-muted/70 transition-colors duration-300"
+                        whileHover={{ scale: 1.05 }}
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
 
                   {/* Case Study Indicator */}
                   {item.route && (
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <motion.div 
+                      className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      whileHover={{ x: 2 }}
+                    >
                       <ArrowRight className="w-5 h-5 text-primary" />
-                    </div>
+                    </motion.div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

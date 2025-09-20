@@ -1,18 +1,19 @@
-import { Navigation } from '@/components/Navigation';
-import { Hero } from '@/components/Hero';
-import { CaseStudyTeasers } from '@/components/CaseStudyTeasers';
+import { AppleHero } from '@/components/AppleHero';
 import { WorkGrid } from '@/components/WorkGrid';
+import { PhilosophySection } from '@/components/PhilosophySection';
+import { AboutSection } from '@/components/AboutSection';
+import { ContactSection } from '@/components/ContactSection';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
-      <Hero />
-      {/* Selected Work section positioned to peek above fold */}
-      <div id="work" className="relative -mt-20 pt-20">
-        <WorkGrid />
-      </div>
-      <CaseStudyTeasers />
+      <ThemeToggle />
+      <AppleHero />
+      <WorkGrid />
+      <PhilosophySection />
+      <AboutSection />
+      <ContactSection />
     </div>
   );
 };
