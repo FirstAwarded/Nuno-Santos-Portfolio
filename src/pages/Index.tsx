@@ -1,20 +1,22 @@
-import { AppleHero } from '@/components/AppleHero';
-import { WorkGrid } from '@/components/WorkGrid';
-import { PhilosophySection } from '@/components/PhilosophySection';
-import { AboutSection } from '@/components/AboutSection';
-import { ContactSection } from '@/components/ContactSection';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { AppleHero } from "@/components/AppleHero";
+import { WorkGrid } from "@/components/WorkGrid";
+import { PhilosophySection } from "@/components/PhilosophySection";
+import { AboutSection } from "@/components/AboutSection";
+import { ContactSection } from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
-      <ThemeToggle />
+    <>
+      {/* Hero Section */}
       <AppleHero />
-      <WorkGrid />
-      <PhilosophySection />
-      <AboutSection />
-      <ContactSection />
-    </div>
+      {/* Rest of the page */}
+      <main className="space-y-32">
+        <WorkGrid />
+        <PhilosophySection />
+        <AboutSection />
+        <ContactSection />
+      </main>
+    </>
   );
 };
 

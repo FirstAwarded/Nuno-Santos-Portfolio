@@ -1,182 +1,149 @@
-import { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, ChevronDown } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown, Sun, Moon } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const Navigation = () => {
-  const [isDark, setIsDark] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const [isDark, setIsDark] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
+  // detect current theme on mount
   useEffect(() => {
-    const isDarkMode = document.documentElement.classList.contains('dark');
+    const isDarkMode = document.documentElement.classList.contains("dark");
     setIsDark(isDarkMode);
   }, []);
 
   const toggleTheme = () => {
     const newMode = !isDark;
     setIsDark(newMode);
-    document.documentElement.classList.toggle('dark', newMode);
+    document.documentElement.classList.toggle("dark", newMode);
   };
 
   const navItems = [
-    { href: '/', label: 'Home' },
-    { 
-      href: '/work', 
-      label: 'Work',
+    { href: "/", label: "Home" },
+    {
+      href: "/work",
+      label: "Work",
       submenu: [
-        { href: '/work', label: 'All Work' },
-        { href: '/work/oart', label: 'OART Case Study' },
-        { href: '/work/safewalk', label: 'SafeWalk' },
-        { href: '/work/umai', label: 'Umai' },
-      ]
+        { href: "/work", label: "All Work" },
+        { href: "/work/oart", label: "OART Case Study" },
+        { href: "/work/safewalk", label: "SafeWalk" },
+        { href: "/work/umai", label: "Umai" },
+      ],
     },
-    { href: '/about', label: 'About' },
-    { href: '/components', label: 'Components' },
+    { href: "/about", label: "About" },
+    { href: "/components", label: "Components" },
   ];
 
+  // highlight current route
+  const isActive = (href: string) => location.pathname === href;
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-border/50">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="text-xl font-medium">
-            Nuno
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <div key={item.href} className="relative group">
-                {item.submenu ? (
-                  <div
-                    className="flex items-center gap-1 cursor-pointer text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
-                    onClick={() => navigate(item.href)}
-                  >
-                    {item.label}
-                    <ChevronDown className="w-4 h-4" />
-                    
-                    {/* Dropdown Menu */}
-                    <div className="absolute top-full left-0 mt-2 w-48 bg-background/95 backdrop-blur-sm border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      <div className="py-2">
-                        {item.submenu.map((subitem) => (
-                          <a
-                            key={subitem.href}
-                            href={subitem.href}
-                            className={cn(
-                              "block px-4 py-2 text-sm transition-colors duration-200 hover:bg-muted/50",
-                              location.pathname === subitem.href 
-                                ? "text-primary font-medium" 
-                                : "text-muted-foreground hover:text-foreground"
-                            )}
-                          >
-                            {subitem.label}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <a
-                    href={item.href}
-                    className={cn(
-                      "text-sm transition-colors duration-300 relative group",
-                      location.pathname === item.href 
-                        ? "text-foreground font-medium" 
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                  >
-                    {item.label}
-                    <span className={cn(
-                      "absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300",
-                      location.pathname === item.href ? "w-full" : "w-0 group-hover:w-full"
-                    )} />
-                  </a>
-                )}
-              </div>
-            ))}
-          </div>
-
-          {/* Theme Toggle & Mobile Menu */}
-          <div className="flex items-center gap-2">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={toggleTheme}
-              className="interactive"
-              aria-label="Toggle theme"
-            >
-              {isDark ? (
-                <Sun className="h-4 w-4" />
-              ) : (
-                <Moon className="h-4 w-4" />
-              )}
-            </Button>
-
-            {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="sm"
-              className="md:hidden interactive"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? (
-                <X className="h-4 w-4" />
-              ) : (
-                <Menu className="h-4 w-4" />
-              )}
-            </Button>
-          </div>
+    <nav className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur">
+      <div className="flex items-center justify-between px-6 py-4">
+        {/* Logo / Site Name */}
+        <div
+          className="cursor-pointer font-semibold text-lg"
+          onClick={() => navigate("/")}
+        >
+          Nuno
         </div>
-
-        {/* Mobile Navigation */}
-        <div className={cn(
-          "md:hidden mt-4 pb-4 transition-all duration-300 overflow-hidden",
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        )}>
-          <div className="flex flex-col space-y-3">
-            {navItems.map((item) => (
-              <div key={item.href}>
-                <a
-                  href={item.href}
-                  className={cn(
-                    "text-sm transition-colors duration-300 py-2 block",
-                    location.pathname === item.href 
-                      ? "text-primary font-medium" 
-                      : "text-muted-foreground hover:text-foreground"
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
+        {/* Desktop navigation */}
+        <div className="hidden md:flex items-center space-x-6">
+          {navItems.map((item) =>
+            item.submenu ? (
+              <div key={item.label} className="relative group">
+                <button
+                  onClick={() => navigate(item.href)}
+                  className="flex items-center font-medium transition-colors hover:text-primary"
                 >
                   {item.label}
-                </a>
-                {item.submenu && (
-                  <div className="ml-4 mt-2 space-y-2">
-                    {item.submenu.slice(1).map((subitem) => (
-                      <a
-                        key={subitem.href}
-                        href={subitem.href}
-                        className={cn(
-                          "text-sm transition-colors duration-300 py-1 block",
-                          location.pathname === subitem.href 
-                            ? "text-primary font-medium" 
-                            : "text-muted-foreground hover:text-foreground"
-                        )}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {subitem.label}
-                      </a>
-                    ))}
-                  </div>
-                )}
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </button>
+                {/* Dropdown */}
+                <div className="absolute top-full left-0 hidden min-w-[10rem] rounded-md border bg-background shadow-xl group-hover:block">
+                  {item.submenu.map((subitem) => (
+                    <button
+                      key={subitem.href}
+                      onClick={() => navigate(subitem.href)}
+                      className="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-muted/30"
+                    >
+                      {subitem.label}
+                    </button>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
+            ) : (
+              <button
+                key={item.href}
+                onClick={() => navigate(item.href)}
+                className={`font-medium transition-colors hover:text-primary ${
+                  isActive(item.href) ? "text-primary" : ""
+                }`}
+              >
+                {item.label}
+              </button>
+            )
+          )}
+        </div>
+        {/* Right controls */}
+        <div className="flex items-center space-x-4">
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="rounded-full p-2 border bg-card shadow hover:shadow-md transition-colors"
+          >
+            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          {/* Mobile menu toggle */}
+          <button
+            className="md:hidden rounded-md p-2"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-label="Toggle menu"
+          >
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
       </div>
+      {/* Mobile navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden border-t bg-background">
+          {navItems.map((item) => (
+            <div key={item.label}>
+              <button
+                onClick={() => {
+                  navigate(item.href);
+                  setIsMenuOpen(false);
+                }}
+                className={`block w-full px-4 py-3 text-left font-medium transition-colors hover:bg-muted/20 ${
+                  isActive(item.href) ? "text-primary" : ""
+                }`}
+              >
+                {item.label}
+              </button>
+              {item.submenu && (
+                <div className="pl-4">
+                  {item.submenu.map((subitem) => (
+                    <button
+                      key={subitem.href}
+                      onClick={() => {
+                        navigate(subitem.href);
+                        setIsMenuOpen(false);
+                      }}
+                      className="block w-full px-4 py-2 text-left text-sm transition-colors hover:bg-muted/10"
+                    >
+                      {subitem.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
     </nav>
   );
 };
