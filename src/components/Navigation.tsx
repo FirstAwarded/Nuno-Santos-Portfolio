@@ -69,9 +69,7 @@ export const Navigation = () => {
               <button
                 key={item.href}
                 onClick={() => navigate(item.href)}
-                className={`font-medium hover:text-primary ${
-                  isActive(item.href) ? "text-primary" : ""
-                }`}
+                className={`font-medium hover:text-primary ${isActive(item.href) ? "text-primary" : ""}`}
               >
                 {item.label}
               </button>
@@ -79,11 +77,7 @@ export const Navigation = () => {
           )}
         </div>
         <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="rounded-full p-2 border bg-card"
-          >
+          <button onClick={toggleTheme} aria-label="Toggle theme" className="rounded-full p-2 border bg-card">
             {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
           <button

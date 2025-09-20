@@ -7,10 +7,7 @@ import { ContactSection } from "@/components/ContactSection";
 const Index = () => {
   return (
     <>
-      {/* ✅ Only the new hero at the top */}
       <AppleHero />
-
-      {/* Rest of the landing page */}
       <main className="space-y-32">
         <WorkGrid />
         <PhilosophySection />

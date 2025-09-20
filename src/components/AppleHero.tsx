@@ -30,7 +30,6 @@ export const AppleHero = () => {
 
   return (
     <section className="relative flex flex-col items-center justify-center px-6 py-40 text-center overflow-hidden">
-      {/* Background layers */}
       <motion.div
         className="absolute inset-0 -z-20"
         initial={{ opacity: 0 }}
@@ -44,7 +43,9 @@ export const AppleHero = () => {
           transition={{ repeat: Infinity, duration: 10 }}
         />
         {/* Subtle geometric grid */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted))/0.08_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted))/0.08_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div
+          className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--muted))/0.08_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--muted))/0.08_1px,transparent_1px)] bg-[size:40px_40px]"
+        />
       </motion.div>
 
       {/* Animated headline */}
@@ -72,19 +73,16 @@ export const AppleHero = () => {
         {sublines[sublineIndex]}
       </motion.p>
 
-      {/* Call-to-action buttons */}
+      {/* Call‑to‑action buttons */}
       <div className="flex flex-col sm:flex-row gap-4 relative z-10">
-        <Button
-          onClick={() => navigate("/work")}
-          className="px-6 py-3 text-base"
-        >
+        <Button onClick={() => navigate("/work")} className="px-6 py-3 text-base">
           View Work
         </Button>
         <Button
           variant="outline"
-          onClick={() =>
-            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-          }
+          onClick={() => {
+            document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+          }}
           className="px-6 py-3 text-base"
         >
           Get in Touch
