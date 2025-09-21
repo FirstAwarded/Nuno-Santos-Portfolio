@@ -1,4 +1,3 @@
-import { Navigation } from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { MapPin, Mail, Calendar, Heart, Book, Coffee,Dumbbell } from 'lucide-react';
@@ -37,7 +36,6 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">

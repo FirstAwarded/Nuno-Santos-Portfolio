@@ -1,4 +1,3 @@
-import { Navigation } from '@/components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
@@ -7,7 +6,6 @@ import { ArrowLeft, Sparkles, TrendingUp, Users, Clock, Palette, Type, Layout, Z
 const Components = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="pt-20 px-6">
         <div className="container mx-auto max-w-6xl">

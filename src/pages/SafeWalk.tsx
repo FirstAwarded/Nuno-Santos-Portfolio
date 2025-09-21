@@ -1,4 +1,3 @@
-import { Navigation } from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,6 +6,12 @@ import { useEffect, useState } from 'react';
 import { Shield, Clock, Users, Navigation as NavIcon, Eye, Heart } from 'lucide-react';
 import AnimatedFeatureTable from '@/components/AnimatedFeatureTable';
 import BarChart from '@/components/BarChart';
+
+//Images and Assets
+import safewalkmockup from '@/assets/SafewalkBannerImage.png';
+import decisionFollowJourney from '@/assets/Safewalk_FollowMyJourney_Decision.png';
+import decisionSafetyBased from '@/assets/Safewalk_SafetyBased_Decision.png';
+import decisionVisualsafety from '@/assets/Safewalk_VisualSafety_Decision.png';
 
 // Animated counter hook
 const useCounter = (end: number, duration: number = 2000) => {
@@ -90,7 +95,6 @@ const ImagePlaceholder = ({ text, className = "" }: { text: string; className?: 
 export default function SafeWalk() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="pt-24">
         {/* Hero Section */}
@@ -102,7 +106,7 @@ export default function SafeWalk() {
           >
             <Badge variant="outline" className="mb-4">Case Study</Badge>
             <h1 className="hero-text mb-6">
-              SafeWalk — Safety-First Navigation
+              <b>SafeWalk</b> - Safety-First Navigation
             </h1>
             <p className="body-large mb-8">
               Most navigation apps optimize for speed. SafeWalk optimizes for safety.
@@ -112,7 +116,7 @@ export default function SafeWalk() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
               <div className="text-center">
                 <div className="text-sm text-muted-foreground">Duration</div>
-                <div className="font-medium">5 weeks</div>
+                <div className="font-medium">3 months</div>
               </div>
               <div className="text-center">
                 <div className="text-sm text-muted-foreground">Role</div>
@@ -146,11 +150,12 @@ export default function SafeWalk() {
                 <MetricCard value={92} suffix="%" label="Prioritize safety over speed" delay={600} />
               </div>
             </div>
-            
-            <ImagePlaceholder 
-              text="SafeWalk app interface mockup - TODO: Add from extracted images" 
-              className="h-96" 
-            />
+            <img
+  src={safewalkmockup}
+  alt="SafeWalk app interface mockup"
+  className="rounded-lg shadow-md h-96 w-full object-cover"
+/>
+
           </div>
         </section>
 
@@ -195,7 +200,7 @@ export default function SafeWalk() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl font-semibold mb-8 text-center">Status Quo — Research Insights</h2>
+            <h2 className="text-3xl font-semibold mb-8 text-center">Research Insights</h2>
             <div className="grid lg:grid-cols-2 gap-12 items-start">
               <div>
                 <div className="space-y-6">
@@ -225,7 +230,7 @@ export default function SafeWalk() {
                       <span className="font-semibold">Key Insight</span>
                     </div>
                     <p className="text-muted-foreground">
-                      Navigation isn't just technical — it's deeply emotional.
+                      Navigation isn't just technical - it's deeply emotional.
                     </p>
                   </div>
                 </div>
@@ -281,7 +286,7 @@ export default function SafeWalk() {
                         <p className="font-medium">88% of testers consistently chose SafeWalk routes over Google Maps.</p>
                       </div>
                     </div>
-                    <ImagePlaceholder text="Safety routing comparison - TODO: Add route comparison images" className="h-64" />
+                    <img src={decisionSafetyBased} alt="Safety routing comparison"className="h-64" />
                   </div>
                 </CardContent>
               </Card>
@@ -300,7 +305,7 @@ export default function SafeWalk() {
                 </CardHeader>
                 <CardContent>
                   <div className="grid lg:grid-cols-2 gap-8 items-center">
-                    <ImagePlaceholder text="Color-coded safety ratings interface - TODO: Add UI screenshots" className="h-64" />
+                    <img src={decisionVisualsafety} alt="Safety routing comparison"className="h-64" />
                     <div>
                       <div className="mb-4">
                         <Badge variant="destructive" className="mb-2">Challenge</Badge>
@@ -347,7 +352,7 @@ export default function SafeWalk() {
                         <p className="font-medium">Especially praised by women and students as "peace of mind for me and my family."</p>
                       </div>
                     </div>
-                    <ImagePlaceholder text="Live tracking interface - TODO: Add journey sharing screenshots" className="h-64" />
+                    <img src={decisionFollowJourney} alt="Safety routing comparison"className="h-64" />
                   </div>
                 </CardContent>
               </Card>
@@ -413,7 +418,7 @@ export default function SafeWalk() {
                   <p className="italic text-center">
                     "For once, I didn't feel nervous walking alone. The app gave me confidence."
                   </p>
-                  <p className="text-sm text-muted-foreground text-center mt-2">— User Testing Participant</p>
+                  <p className="text-sm text-muted-foreground text-center mt-2">- User Testing Participant</p>
                 </div>
               </CardContent>
             </Card>
@@ -473,7 +478,7 @@ export default function SafeWalk() {
                   <CardTitle className="text-lg">Design is responsibility</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Directions can protect — or endanger. Every routing decision has real-world safety implications.</p>
+                  <p className="text-muted-foreground">Directions can protect or endanger. Every routing decision has real-world safety implications.</p>
                 </CardContent>
               </Card>
               
@@ -491,7 +496,7 @@ export default function SafeWalk() {
                   <CardTitle className="text-lg">Trust is measurable</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Confidence isn't abstract — it's an outcome you can design for and measure through user behavior.</p>
+                  <p className="text-muted-foreground">Confidence isn't abstract, it's an outcome you can design for and measure through user behavior.</p>
                 </CardContent>
               </Card>
             </div>

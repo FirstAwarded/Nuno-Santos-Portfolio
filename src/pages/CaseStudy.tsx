@@ -1,4 +1,3 @@
-import { Navigation } from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -37,7 +36,6 @@ export default function CaseStudy() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="pt-24 pb-16">
         {/* Back Button */}

@@ -1,4 +1,3 @@
-import { Navigation } from '@/components/Navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -88,7 +87,6 @@ const ImagePlaceholder = ({ text, className = "" }: { text: string; className?: 
 export default function Umai() {
   return (
     <div className="min-h-screen bg-background">
-      <Navigation />
       
       <main className="pt-24">
         {/* Hero Section */}
