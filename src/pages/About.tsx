@@ -1,26 +1,21 @@
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { MapPin, Mail, Calendar, Heart, Book, Coffee,Dumbbell } from 'lucide-react';
+import profilepicture from '@/assets/profilepicture.jpeg';
 
 export default function About() {
   const timeline = [
     {
-      year: '2024',
-      title: 'Senior UX Designer',
+      year: '2022 - Present',
+      title: 'Service Designer',
       company: 'Current Role',
       description: 'Leading end-to-end design projects with focus on accessibility and user research.'
     },
     {
-      year: '2023',
-      title: 'UX/UI Designer',
-      company: 'Product Team',
-      description: 'Designed mobile experiences for 100k+ users, improved conversion by 40%.'
-    },
-    {
       year: '2022',
-      title: 'Junior Designer',
-      company: 'First Role',
-      description: 'Started journey in UX with focus on wireframing and user testing.'
+      title: 'UX/UI Designer',
+      company: 'Internship (3 months)',
+      description: 'Designed mobile experiences for users, improved conversion by 17%.'
     },
   ];
 
@@ -41,7 +36,7 @@ export default function About() {
         <div className="container mx-auto px-6 max-w-4xl">
           {/* Header */}
           <div className="text-center mb-16 animate-fade-in-up">
-            <div className="w-32 h-32 bg-gradient-to-br from-primary to-accent rounded-full mx-auto mb-6 animate-glow" />
+            <img src={profilepicture} alt="Profile Picture" className="w-32 h-32 rounded-full mx-auto mb-4 object-cover" />
             <h1 className="text-4xl font-light mb-4">About Nuno</h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               A curious designer who believes the best solutions come from understanding 

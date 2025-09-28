@@ -8,12 +8,6 @@ import { motion, useInView } from 'framer-motion';
 import oartMockup from '@/assets/oart-mockup.jpg';
 import safewalkMockup from '@/assets/SafewalkBannerImage.png';
 import umaiMockup from '@/assets/UmaiBannerImage.png';
-import enterpriseMockup from '@/assets/enterprise-mockup.jpg';
-import healthMockup from '@/assets/health-mockup.jpg';
-import motionMockup from '@/assets/motion-mockup.jpg';
-import datavizMockup from '@/assets/dataviz-mockup.jpg';
-import designsystemMockup from '@/assets/designsystem-mockup.jpg';
-import fintechMockup from '@/assets/fintech-mockup.jpg';
 
 interface WorkItem {
   id: string;
@@ -28,7 +22,7 @@ interface WorkItem {
 const workItems: WorkItem[] = [
   {
     id: 'oart',
-    title: 'OART — Scalable UX for Enterprise Workflows',
+    title: 'Scalable UX for Enterprise Workflows',
     description: 'Replaced legacy systems with scalable application that cut approval time by 75%',
     category: 'web',
     tags: ['Enterprise', 'Workflows', 'Case Study'],
@@ -37,7 +31,7 @@ const workItems: WorkItem[] = [
   },
   {
     id: 'safewalk',
-    title: 'SafeWalk — Safety-First Navigation',
+    title: 'SafeWalk - Safety-First Navigation',
     description: 'Navigation app that prioritizes safety over speed for nighttime walking',
     category: 'mobile',
     tags: ['Mobile App', 'Safety', 'Navigation'],
@@ -46,61 +40,14 @@ const workItems: WorkItem[] = [
   },
   {
     id: 'umai',
-    title: 'Umai — Personalizing the Ordering Experience',
+    title: 'Umai - Personalizing the Ordering Experience',
     description: 'Food ordering platform that reduced order time by 30% through smart personalization',
     category: 'mobile',
     tags: ['Mobile App', 'Food Tech', 'Personalization'],
     image: umaiMockup,
     route: '/work/umai'
   },
-  {
-    id: 'enterprise-platform',
-    title: 'Enterprise Platform',
-    description: 'Six-figure savings through streamlined approval workflows',
-    category: 'web',
-    tags: ['Enterprise', 'Workflows', 'Efficiency'],
-    image: enterpriseMockup
-  },
-  {
-    id: 'health-tooling',
-    title: 'Health Tooling',
-    description: 'Patient-centered experience reducing onboarding friction',
-    category: 'mobile',
-    tags: ['Healthcare', 'Patient Care', 'Mobile'],
-    image: healthMockup
-  },
-  {
-    id: 'motion-prototype',
-    title: 'Motion Prototype',
-    description: 'Live Activity system with seamless microinteractions',
-    category: 'system',
-    tags: ['Motion', 'Prototyping', 'iOS'],
-    image: motionMockup
-  },
-  {
-    id: 'data-visualization',
-    title: 'Data Visualization',
-    description: 'Complex enterprise dashboards made intuitive',
-    category: 'web',
-    tags: ['Data Viz', 'Dashboard', 'Analytics'],
-    image: datavizMockup
-  },
-  {
-    id: 'design-system',
-    title: 'Design System',
-    description: 'Scalable component library for rapid development',
-    category: 'system',
-    tags: ['Design System', 'Components', 'Scalability'],
-    image: designsystemMockup
-  },
-  {
-    id: 'fintech-platform',
-    title: 'Fintech Platform',
-    description: 'Secure financial tools with enhanced accessibility',
-    category: 'web',
-    tags: ['Fintech', 'Security', 'Accessibility'],
-    image: fintechMockup
-  }
+
 ];
 
 const categoryColors = {

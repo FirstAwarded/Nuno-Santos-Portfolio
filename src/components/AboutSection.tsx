@@ -1,7 +1,6 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
-import 
+import profilepicture from '@/assets/profilepicture.jpeg';
 
 export const AboutSection = () => {
   const ref = useRef(null);
@@ -16,19 +15,25 @@ export const AboutSection = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-            className="relative"
+            className="relative flex justify-center"
           >
-            <div className="aspect-square relative overflow-hidden rounded-3xl bg-muted">
-              {/* Placeholder for photo - mask reveal effect */}
-              <img src={profilepicture} alt="Safety routing comparison"className="h-64" />
-              </div>
-              <motion.div
-                initial={{ y: '100%' }}
-                animate={isInView ? { y: '0%' } : {}}
-                transition={{ duration: 1, delay: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
-                className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"
+            <div className="relative overflow-hidden rounded-3xl bg-muted w-full max-w-sm">
+              <img
+                src={profilepicture}
+                alt="Profile"
+                className="w-full h-auto object-cover"
               />
             </div>
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={isInView ? { y: '0%' } : {}}
+              transition={{
+                duration: 1,
+                delay: 0.2,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent rounded-3xl"
+            />
           </motion.div>
 
           {/* Right: Content */}
@@ -36,7 +41,11 @@ export const AboutSection = () => {
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.4,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               className="text-4xl md:text-5xl font-light leading-tight"
               style={{ fontWeight: 200 }}
             >
@@ -46,17 +55,26 @@ export const AboutSection = () => {
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.6,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               className="text-xl text-muted-foreground leading-relaxed"
             >
-              I'm Nuno, a product-minded Service Designer. I build flows that close loops, 
-              systems that earn trust, and case studies that prove it.
+              I'm Nuno, a product-minded Service Designer. I build flows that
+              close loops, systems that earn trust, and case studies that prove
+              it.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                duration: 0.6,
+                delay: 0.8,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               className="flex gap-6 pt-4"
             >
               <motion.a
@@ -72,6 +90,7 @@ export const AboutSection = () => {
                   transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
                 />
               </motion.a>
+
               <motion.a
                 href="#contact"
                 className="text-muted-foreground hover:text-foreground transition-colors relative group"

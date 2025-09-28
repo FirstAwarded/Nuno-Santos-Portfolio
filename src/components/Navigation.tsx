@@ -31,7 +31,7 @@ export const Navigation = () => {
       ],
     },
     { href: "/about", label: "About" },
-    { href: "/components", label: "Components" },
+   
   ];
 
   const isActive = (href: string) => location.pathname === href;
