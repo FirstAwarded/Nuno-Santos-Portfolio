@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
+import 
 
 export const AboutSection = () => {
   const ref = useRef(null);
@@ -19,8 +20,7 @@ export const AboutSection = () => {
           >
             <div className="aspect-square relative overflow-hidden rounded-3xl bg-muted">
               {/* Placeholder for photo - mask reveal effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-muted-foreground/20 to-muted-foreground/40 flex items-center justify-center">
-                <div className="text-6xl text-muted-foreground/60">N</div>
+              <img src={profilepicture} alt="Safety routing comparison"className="h-64" />
               </div>
               <motion.div
                 initial={{ y: '100%' }}

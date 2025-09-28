@@ -159,14 +159,11 @@ export default function About() {
                   Let's Connect
                 </h3>
                 <div className="space-y-2 text-sm">
-                  <a href="mailto:nuno@example.com" className="text-primary hover:underline block">
-                    nuno@example.com
+                  <a href="mailto:nunorgsantosdesigner@gmail.com" className="text-primary hover:underline block">
+                    Email
                   </a>
-                  <a href="https://linkedin.com/in/nuno" className="text-primary hover:underline block">
+                  <a href="https://www.linkedin.com/in/nunorgsantos/" className="text-primary hover:underline block">
                     LinkedIn
-                  </a>
-                  <a href="https://dribbble.com/nuno" className="text-primary hover:underline block">
-                    Dribbble
                   </a>
                 </div>
               </Card>
