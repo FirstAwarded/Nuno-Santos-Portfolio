@@ -48,7 +48,7 @@ export default function Oart() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-                OART, Scalable UX for Enterprise Workflows
+                Scalable UX for Enterprise Workflows
               </h1>
               <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
                 Replaced legacy systems with a scalable application that cut
