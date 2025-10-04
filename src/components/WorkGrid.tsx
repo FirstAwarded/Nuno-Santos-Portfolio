@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, useInView } from 'framer-motion';
 
@@ -17,6 +17,7 @@ interface WorkItem {
   tags: string[];
   image: string;
   route?: string;
+  locked?: boolean;
 }
 
 const workItems: WorkItem[] = [
@@ -27,7 +28,8 @@ const workItems: WorkItem[] = [
     category: 'web',
     tags: ['Enterprise', 'Workflows', 'Case Study'],
     image: oartMockup,
-    route: '/work/oart'
+    route: '/work/enterprise/OTGate', // redirect to password gate
+    locked: true,
   },
   {
     id: 'safewalk',
@@ -36,7 +38,7 @@ const workItems: WorkItem[] = [
     category: 'mobile',
     tags: ['Mobile App', 'Safety', 'Navigation'],
     image: safewalkMockup,
-    route: '/work/safewalk'
+    route: '/work/safewalk',
   },
   {
     id: 'umai',
@@ -45,9 +47,8 @@ const workItems: WorkItem[] = [
     category: 'mobile',
     tags: ['Mobile App', 'Food Tech', 'Personalization'],
     image: umaiMockup,
-    route: '/work/umai'
+    route: '/work/umai',
   },
-
 ];
 
 const categoryColors = {
@@ -62,9 +63,10 @@ export const WorkGrid = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const filteredItems = selectedCategory === 'all' 
-    ? workItems 
-    : workItems.filter(item => item.category === selectedCategory);
+  const filteredItems =
+    selectedCategory === 'all'
+      ? workItems
+      : workItems.filter((item) => item.category === selectedCategory);
 
   const categories = [
     { id: 'all', label: 'All Work' },
@@ -76,8 +78,6 @@ export const WorkGrid = () => {
   const handleItemClick = (item: WorkItem) => {
     if (item.route) {
       navigate(item.route);
-    } else {
-      console.log('Navigate to:', item.id);
     }
   };
 
@@ -93,7 +93,7 @@ export const WorkGrid = () => {
         >
           <h2 className="display-text mb-6 font-display">Selected Work</h2>
           <p className="body-large max-w-3xl mx-auto">
-            A collection of projects showcasing strategic UX thinking, 
+            A collection of projects showcasing strategic UX thinking,
             interface craft, and attention to meaningful details.
           </p>
         </motion.div>
@@ -103,7 +103,7 @@ export const WorkGrid = () => {
           {categories.map((category) => (
             <Button
               key={category.id}
-              variant={selectedCategory === category.id ? "default" : "outline"}
+              variant={selectedCategory === category.id ? 'default' : 'outline'}
               size="sm"
               onClick={() => setSelectedCategory(category.id)}
               className="transition-all duration-200 hover:scale-105"
@@ -117,7 +117,7 @@ export const WorkGrid = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredItems.map((item, index) => {
             const colorClass = categoryColors[item.category];
-            
+
             return (
               <motion.div
                 key={item.id}
@@ -128,21 +128,30 @@ export const WorkGrid = () => {
                 className="group relative overflow-hidden rounded-3xl bg-card border border-border/50 hover:shadow-xl transition-all duration-500 cursor-pointer"
                 onClick={() => handleItemClick(item)}
               >
-                {/* Image is always visible */}
+                {/* Image */}
                 <div className="relative h-48 overflow-hidden rounded-t-3xl">
-                  <img 
-                    src={item.image} 
+                  <img
+                    src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${colorClass} backdrop-blur-sm`}>
+
+                  <div className="absolute top-4 right-4 flex items-center gap-2">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-medium ${colorClass} backdrop-blur-sm`}
+                    >
                       {item.category}
                     </span>
+                    {item.locked && (
+                      <Lock
+                        className="w-4 h-4 text-white/80"
+                        title="Password protected case study"
+                      />
+                    )}
                   </div>
                 </div>
-                
+
                 {/* Card content */}
                 <div className="relative p-6">
                   <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">

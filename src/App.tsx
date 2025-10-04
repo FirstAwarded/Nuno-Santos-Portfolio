@@ -10,11 +10,13 @@ import Work from "./pages/Work";
 import CaseStudy from "./pages/CaseStudy";
 import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
-import Oart from "./pages/Oart";
+import Oart from "./pages/Entreprise";
 import SafeWalk from "./pages/SafeWalk";
 import Umai from "./pages/Umai";
+import EnterpriseGate from "./pages/OTGate";
 
 import { Navigation } from "@/components/Navigation";
+import { Import } from "lucide-react";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,7 @@ const App = () => (
           <Route path="/work/umai" element={<Umai />} />
           <Route path="/components" element={<Components />} />
           <Route path="/work/:caseStudyId" element={<CaseStudy />} />
+          <Route path="/work/Enterprise/OTgate" element={<EnterpriseGate />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
