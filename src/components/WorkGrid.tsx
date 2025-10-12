@@ -28,7 +28,7 @@ const workItems: WorkItem[] = [
     category: 'web',
     tags: ['Enterprise', 'Workflows', 'Case Study'],
     image: oartMockup,
-    route: '/work/enterprise/OTGate', // redirect to password gate
+    route: '/work/enterprise/otgate', // redirect to password gate
     locked: true,
   },
   {
@@ -144,10 +144,7 @@ export const WorkGrid = () => {
                       {item.category}
                     </span>
                     {item.locked && (
-                      <Lock
-                        className="w-4 h-4 text-white/80"
-                        title="Password protected case study"
-                      />
+                      <Lock className="w-4 h-4 text-white/80" />
                     )}
                   </div>
                 </div>

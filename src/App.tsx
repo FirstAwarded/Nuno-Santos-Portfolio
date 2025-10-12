@@ -34,7 +34,7 @@ const App = () => (
           <Route path="/work/umai" element={<Umai />} />
           <Route path="/components" element={<Components />} />
           <Route path="/work/:caseStudyId" element={<CaseStudy />} />
-          <Route path="/work/Enterprise/OTgate" element={<EnterpriseGate />} />
+          <Route path="/work/enterprise/otgate" element={<EnterpriseGate />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
