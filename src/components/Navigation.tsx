@@ -25,7 +25,7 @@ export const Navigation = () => {
       label: "Work",
       submenu: [
         { href: "/work", label: "All Work" },
-        { href: "/work/oart", label: "OART" },
+        { href: "/work/enterprise/otgate", label: "Web UX" },
         { href: "/work/safewalk", label: "SafeWalk" },
         { href: "/work/umai", label: "Umai" },
       ],
