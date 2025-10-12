@@ -1,8 +1,5 @@
-import { ImmersiveHero } from "@/components/ImmersiveHero";
-import { PersonaTour } from "@/components/PersonaTour";
-import { ImpactMetrics } from "@/components/ImpactMetrics";
-import { InteractiveCaseStudies } from "@/components/InteractiveCaseStudies";
-import { ProcessShowcase } from "@/components/ProcessShowcase";
+import { AppleHero } from "@/components/AppleHero";
+import { WorkGrid } from "@/components/WorkGrid";
 import { PhilosophySection } from "@/components/PhilosophySection";
 import { AboutSection } from "@/components/AboutSection";
 import { ContactSection } from "@/components/ContactSection";
@@ -10,12 +7,9 @@ import { ContactSection } from "@/components/ContactSection";
 const Index = () => {
   return (
     <>
-      <ImmersiveHero />
-      <main>
-        <PersonaTour />
-        <ImpactMetrics />
-        <InteractiveCaseStudies />
-        <ProcessShowcase />
+      <AppleHero />
+      <main className="space-y-32">
+        <WorkGrid />
         <PhilosophySection />
         <AboutSection />
         <ContactSection />
