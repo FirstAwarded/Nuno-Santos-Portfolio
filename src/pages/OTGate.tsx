@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useNavigate } from "react-router-dom";
 
-const CORRECT_PASSWORD = "oart2025"; // 🔑 replace with your actual password
+const CORRECT_PASSWORD = import.meta.env.VITE_OART_PASSWORD || "oart2025"; // 🔑 reads from env variable
 
 export default function OartGate() {
   const [password, setPassword] = useState("");
