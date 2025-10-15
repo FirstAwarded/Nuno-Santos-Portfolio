@@ -1,20 +1,18 @@
-import { AppleHero } from "@/components/AppleHero";
-import { WorkGrid } from "@/components/WorkGrid";
-import { PhilosophySection } from "@/components/PhilosophySection";
-import { AboutSection } from "@/components/AboutSection";
-import { ContactSection } from "@/components/ContactSection";
+import { ClarityHero } from "@/components/ClarityHero";
+import { ClarityWork } from "@/components/ClarityWork";
+import { ClarityAbout } from "@/components/ClarityAbout";
+import { ClarityMetrics } from "@/components/ClarityMetrics";
+import { ClarityContact } from "@/components/ClarityContact";
 
 const Index = () => {
   return (
-    <>
-      <AppleHero />
-      <main className="space-y-32">
-        <WorkGrid />
-        <PhilosophySection />
-        <AboutSection />
-        <ContactSection />
-      </main>
-    </>
+    <main>
+      <ClarityHero />
+      <ClarityWork />
+      <ClarityAbout />
+      <ClarityMetrics />
+      <ClarityContact />
+    </main>
   );
 };
 
