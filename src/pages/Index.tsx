@@ -1,18 +1,20 @@
-import { SimpleHero } from "@/components/SimpleHero";
-import { SimpleWork } from "@/components/SimpleWork";
-import { SimpleAbout } from "@/components/SimpleAbout";
-import { SimpleProof } from "@/components/SimpleProof";
-import { SimpleContact } from "@/components/SimpleContact";
+import { AppleHero } from "@/components/AppleHero";
+import { WorkGrid } from "@/components/WorkGrid";
+import { PhilosophySection } from "@/components/PhilosophySection";
+import { AboutSection } from "@/components/AboutSection";
+import { ContactSection } from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <main>
-      <SimpleHero />
-      <SimpleWork />
-      <SimpleAbout />
-      <SimpleProof />
-      <SimpleContact />
-    </main>
+    <>
+      <AppleHero />
+      <main className="space-y-32">
+        <WorkGrid />
+        <PhilosophySection />
+        <AboutSection />
+        <ContactSection />
+      </main>
+    </>
   );
 };
 
