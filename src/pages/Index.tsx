@@ -1,17 +1,17 @@
-import { ClarityHero } from "@/components/ClarityHero";
-import { ClarityWork } from "@/components/ClarityWork";
-import { ClarityAbout } from "@/components/ClarityAbout";
-import { ClarityMetrics } from "@/components/ClarityMetrics";
-import { ClarityContact } from "@/components/ClarityContact";
+import { SimpleHero } from "@/components/SimpleHero";
+import { SimpleWork } from "@/components/SimpleWork";
+import { SimpleAbout } from "@/components/SimpleAbout";
+import { SimpleProof } from "@/components/SimpleProof";
+import { SimpleContact } from "@/components/SimpleContact";
 
 const Index = () => {
   return (
     <main>
-      <ClarityHero />
-      <ClarityWork />
-      <ClarityAbout />
-      <ClarityMetrics />
-      <ClarityContact />
+      <SimpleHero />
+      <SimpleWork />
+      <SimpleAbout />
+      <SimpleProof />
+      <SimpleContact />
     </main>
   );
 };

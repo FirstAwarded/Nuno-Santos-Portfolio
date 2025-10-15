@@ -142,68 +142,61 @@
 }
 
 @layer components {
-  /* Engineered Clarity Typography */
-  .headline-clarity {
-    @apply text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.1];
-    letter-spacing: -0.02em;
+  /* Simple Impact Typography - compact and precise */
+  .hero-simple {
+    @apply text-[2.4rem] md:text-[3rem] font-normal tracking-tight leading-[1.15];
+    letter-spacing: -0.015em;
   }
   
-  .subline-clarity {
-    @apply text-lg md:text-xl font-normal leading-relaxed text-muted-foreground;
-    letter-spacing: -0.005em;
+  .body-simple {
+    @apply text-base font-normal leading-relaxed text-muted-foreground;
+    letter-spacing: -0.003em;
   }
   
-  .label-mono {
-    @apply text-xs font-mono uppercase tracking-wider text-muted-foreground;
-    letter-spacing: 0.08em;
+  .label-simple {
+    @apply text-xs font-medium uppercase tracking-wider text-muted-foreground;
+    letter-spacing: 0.06em;
   }
   
-  /* Precision Cards */
-  .clarity-card {
-    @apply bg-card border border-border/40 rounded-lg p-8;
+  /* Compact Cards */
+  .card-simple {
+    @apply bg-card border border-border/40 rounded-xl overflow-hidden;
     box-shadow: var(--shadow-micro);
-    transition: var(--transition-smooth);
+    transition: var(--transition-quick);
   }
   
-  .clarity-card:hover {
-    box-shadow: var(--shadow-lift);
+  .card-simple:hover {
+    box-shadow: var(--shadow-soft);
     transform: translateY(-2px);
   }
   
-  /* Interaction States */
-  .btn-clarity {
-    @apply bg-primary text-primary-foreground px-6 py-3 rounded-md font-medium;
+  /* Interaction States - micro movements */
+  .btn-simple {
+    @apply bg-foreground text-background px-5 py-2 rounded-full text-sm font-medium;
     transition: var(--transition-quick);
-    box-shadow: var(--shadow-micro);
   }
   
-  .btn-clarity:hover {
+  .btn-simple:hover {
     transform: scaleX(1.02);
-    box-shadow: var(--shadow-soft);
   }
   
-  .btn-clarity-outline {
-    @apply border border-border bg-transparent text-foreground px-6 py-3 rounded-md font-medium;
+  .btn-simple-outline {
+    @apply border border-border bg-transparent text-foreground px-5 py-2 rounded-full text-sm font-medium;
     transition: var(--transition-quick);
   }
   
-  .btn-clarity-outline:hover {
-    @apply bg-muted/30;
+  .btn-simple-outline:hover {
+    @apply border-foreground;
     transform: translateX(1px);
   }
   
-  /* Magnetic cursor effect helper */
-  .magnetic {
-    transition: var(--transition-smooth);
-  }
-  
-  /* Focus states - 3px soft ring */
+  /* Focus states */
   .focus-ring:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.25);
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.3);
   }
   
-  /* Reduced motion support */
+  /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
     * {
       animation-duration: 0.01ms !important;
