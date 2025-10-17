@@ -43,11 +43,12 @@ export const LandingHero = () => {
   };
 
   return (
-    <section className="relative h-screen flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-[hsl(var(--background))] to-[hsl(var(--secondary))]">
-      {/* Subtle mesh background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-[mesh-ripple_15s_ease-in-out_infinite]" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/10 rounded-full blur-3xl animate-[mesh-ripple_20s_ease-in-out_infinite_2s]" />
+    <section className="relative h-[100vh] flex flex-col items-center justify-center px-4 overflow-hidden bg-gradient-to-b from-[hsl(var(--background))] via-[hsl(var(--muted)/0.3)] to-[hsl(var(--background))]">
+      {/* Animated mesh background */}
+      <div className="absolute inset-0 opacity-[0.08] motion-safe:animate-[mesh-drift_15s_ease-in-out_infinite] motion-reduce:opacity-[0.04]">
+        <div className="absolute top-[20%] left-[15%] w-[400px] h-[400px] bg-accent rounded-full blur-3xl" />
+        <div className="absolute bottom-[25%] right-[20%] w-[350px] h-[350px] bg-primary rounded-full blur-3xl" />
+        <div className="absolute top-[60%] left-[50%] w-[300px] h-[300px] bg-muted rounded-full blur-3xl" />
       </div>
 
       {/* Hero content */}
@@ -59,7 +60,7 @@ export const LandingHero = () => {
           }`}
         >
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal text-foreground tracking-tight leading-tight">
-            Product Designer turning<br />complexity into clarity.
+            Product Designer turning complexity into clarity.
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             3+ years crafting systems that help enterprise teams move faster through design clarity.
