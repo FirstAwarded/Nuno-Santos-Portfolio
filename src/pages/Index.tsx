@@ -1,17 +1,17 @@
-import { SimpleHero } from "@/components/SimpleHero";
-import { SimpleWork } from "@/components/SimpleWork";
-import { SimpleAbout } from "@/components/SimpleAbout";
-import { SimpleProof } from "@/components/SimpleProof";
-import { SimpleContact } from "@/components/SimpleContact";
+import { GlassMeshHero } from "@/components/GlassMeshHero";
+import { FullScreenWork } from "@/components/FullScreenWork";
+import { FullScreenAbout } from "@/components/FullScreenAbout";
+import { FullScreenContact } from "@/components/FullScreenContact";
+import { VerticalNavigation } from "@/components/VerticalNavigation";
 
 const Index = () => {
   return (
-    <main>
-      <SimpleHero />
-      <SimpleWork />
-      <SimpleAbout />
-      <SimpleProof />
-      <SimpleContact />
+    <main className="scroll-snap-container">
+      <VerticalNavigation />
+      <GlassMeshHero />
+      <FullScreenWork />
+      <FullScreenAbout />
+      <FullScreenContact />
     </main>
   );
 };

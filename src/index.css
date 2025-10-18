@@ -142,6 +142,41 @@
 }
 
 @layer components {
+  /* Scroll snap container */
+  .scroll-snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  
+  /* Glass panel effect */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    box-shadow: 
+      inset 0 0 20px rgba(255, 255, 255, 0.05),
+      0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Glass button */
+  .glass-button {
+    @apply px-8 py-3 rounded-full text-base font-medium text-white;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .glass-button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
   /* Simple Impact Typography - compact and precise */
   .hero-simple {
     @apply text-[2.4rem] md:text-[3rem] font-normal tracking-tight leading-[1.15];
@@ -198,6 +233,14 @@
   
   /* Reduced motion */
   @media (prefers-reduced-motion: reduce) {
+    .scroll-snap-container {
+      scroll-snap-type: none;
+    }
+    
+    .glass-button:hover {
+      transform: none;
+    }
+    
     * {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
