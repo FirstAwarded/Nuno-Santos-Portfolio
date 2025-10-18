@@ -1,13 +1,15 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
+import profilePicture from "@/assets/profilepicture.jpeg";
 
 export const GlassMeshHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   
-  const meshX = useTransform(mouseX, [0, window.innerWidth], [-20, 20]);
-  const meshY = useTransform(mouseY, [0, window.innerHeight], [-20, 20]);
+  const portraitRotateX = useTransform(mouseY, [0, window.innerHeight], [1.5, -1.5]);
+  const portraitRotateY = useTransform(mouseX, [0, window.innerWidth], [-1.5, 1.5]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
@@ -27,78 +29,119 @@ export const GlassMeshHero = () => {
   return (
     <section 
       id="hero" 
-      className="relative h-screen flex items-center justify-center px-6 overflow-hidden snap-start snap-always"
+      className="relative h-screen flex items-center overflow-hidden snap-start snap-always"
     >
-      {/* Dark mesh gradient background with parallax */}
-      <motion.div
-        className="absolute inset-0 -z-20"
-        style={{ 
-          x: meshX,
-          y: meshY,
-          background: `
-            radial-gradient(at 30% 40%, hsl(0 0% 16%) 0%, transparent 60%),
-            radial-gradient(at 70% 60%, hsl(0 0% 10%) 0%, transparent 60%),
-            hsl(0 0% 5.5%)
-          `
-        }}
-      >
-        {/* Subtle animated overlay */}
-        <motion.div
+      {/* Animated mesh gradient background */}
+      <div className="absolute inset-0 -z-20 animate-mesh-drift">
+        <div 
           className="absolute inset-0"
-          animate={{ 
-            opacity: [0.3, 0.4, 0.3],
-            scale: [1, 1.01, 1]
-          }}
-          transition={{ 
-            repeat: Infinity, 
-            duration: 18, 
-            ease: [0.4, 0, 0.2, 1]
-          }}
           style={{
-            background: "radial-gradient(circle at 50% 50%, hsl(200 15% 25% / 0.15) 0%, transparent 70%)"
+            background: `
+              radial-gradient(at 30% 40%, #2a2a2a 0%, transparent 60%),
+              radial-gradient(at 70% 60%, #1a1a1a 0%, transparent 60%),
+              #0e0e0e
+            `,
+            backgroundSize: '200% 200%',
           }}
         />
-      </motion.div>
+      </div>
 
-      {/* Glass panel container */}
+      {/* Glass panel container - split layout */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isLoaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        className="glass-panel max-w-4xl mx-auto px-12 py-16 text-center"
+        className="glass-panel-fallout max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 px-[10%] py-[12%]"
       >
-        {/* Headline */}
-        <motion.h1
-          className="text-[2.8rem] md:text-[3.5rem] font-light tracking-tight leading-[1.15] text-white mb-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        >
-          Service designer shaping enterprise workflows into intuitive tools
-        </motion.h1>
-
-        {/* Subline */}
-        <motion.p
-          className="text-lg md:text-xl font-light text-white/70 mb-10 max-w-2xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.35, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        >
-          Designing clarity for data-driven platforms
-        </motion.p>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
-        >
-          <a
-            href="#work"
-            className="glass-button inline-block"
+        {/* Left: Content (60%) */}
+        <div className="flex-[0.6] space-y-8">
+          <motion.h1
+            className="text-[3.5rem] lg:text-[4rem] font-normal tracking-tight leading-[1.1] text-[#eaeaea]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            style={{ letterSpacing: '-0.5px' }}
           >
-            View my work
-          </a>
+            Product designer building clarity in complex systems
+          </motion.h1>
+
+          <motion.p
+            className="text-[1.375rem] font-light text-[#eaeaea]/80 max-w-[480px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.35, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+            style={{ fontWeight: 300 }}
+          >
+            From research to prototype, I translate operations into intuitive digital tools.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isLoaded ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <a
+              href="#work"
+              className="inline-block text-base uppercase tracking-wider font-medium text-[#eaeaea] border border-[#a6c48a]/30 px-8 py-3 rounded-full transition-all duration-300 hover:border-[#bcc9a4] hover:bg-[#a6c48a]/10 hover:translate-x-[2px]"
+              style={{ letterSpacing: '1px' }}
+            >
+              View my work →
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Right: Portrait (40%) */}
+        <motion.div
+          className="flex-[0.4] relative"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
+          transition={{ delay: 0.4, duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          {/* Atomic icon decoration */}
+          <div className="absolute -top-6 -right-6 w-12 h-12 opacity-5 pointer-events-none">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="3" fill="white"/>
+              <circle cx="24" cy="24" r="12" stroke="white" strokeWidth="1"/>
+              <circle cx="24" cy="24" r="20" stroke="white" strokeWidth="1" strokeDasharray="2 4"/>
+            </svg>
+          </div>
+
+          <motion.div
+            className="relative w-72 h-96 rounded-2xl overflow-hidden"
+            style={{
+              rotateX: portraitRotateX,
+              rotateY: portraitRotateY,
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {/* Glow edge */}
+            <div className="absolute inset-0 rounded-2xl shadow-[0_0_60px_rgba(255,255,255,0.05)] pointer-events-none z-10" style={{ filter: 'blur(12px)' }} />
+            
+            {/* Portrait image */}
+            <motion.img
+              src={profilePicture}
+              alt="Nuno Santos"
+              className="w-full h-full object-cover transition-all duration-1000"
+              style={{
+                filter: isHovered ? 'grayscale(0)' : 'grayscale(1)',
+              }}
+            />
+
+            {/* CRT flicker effect on hover */}
+            {isHovered && (
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.15, 0] }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  background: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.03) 0px, transparent 2px, transparent 4px)',
+                }}
+              />
+            )}
+          </motion.div>
         </motion.div>
       </motion.div>
     </section>
