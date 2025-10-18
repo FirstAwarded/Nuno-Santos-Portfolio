@@ -1,31 +1,18 @@
-import { Navigation } from "@/components/Navigation";
-import { LandingHero } from "@/components/LandingHero";
-import { AboutSnapshot } from "@/components/AboutSnapshot";
+import { SimpleHero } from "@/components/SimpleHero";
+import { SimpleWork } from "@/components/SimpleWork";
 import { SimpleAbout } from "@/components/SimpleAbout";
 import { SimpleProof } from "@/components/SimpleProof";
 import { SimpleContact } from "@/components/SimpleContact";
 
 const Index = () => {
   return (
-    <>
-      <Navigation />
-      <main>
-        <LandingHero />
-        <div id="work-section" className="scroll-mt-20">
-          {/* Work section anchor - projects are in hero */}
-        </div>
-        
-        {/* About Snapshot - compact version */}
-        <AboutSnapshot />
-        
-        {/* Stacked cards that slide up on scroll */}
-        <div id="about-section" className="scroll-mt-20">
-          <SimpleAbout />
-        </div>
-        <SimpleProof />
-        <SimpleContact />
-      </main>
-    </>
+    <main>
+      <SimpleHero />
+      <SimpleWork />
+      <SimpleAbout />
+      <SimpleProof />
+      <SimpleContact />
+    </main>
   );
 };
 

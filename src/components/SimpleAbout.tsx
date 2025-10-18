@@ -1,54 +1,40 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import profilePic from "@/assets/profilepicture.jpeg";
+import { motion } from "framer-motion";
+import profilePicture from "@/assets/profilepicture.jpeg";
 
 export const SimpleAbout = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
-
   return (
-    <section 
-      id="about-full"
-      ref={ref}
-      className="relative py-20 px-6 bg-card/50 backdrop-blur-sm transition-all duration-225 motion-reduce:transition-none"
-      style={{
-        transform: isInView ? 'translateY(0)' : 'translateY(20px)',
-        opacity: isInView ? 1 : 0.95
-      }}
-    >
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.225, ease: [0.4, 0, 0.2, 1] }}
-        className="max-w-5xl mx-auto grid md:grid-cols-[200px_1fr] gap-8 items-start"
-      >
-        {/* Left: Profile picture */}
-        <div className="relative overflow-hidden rounded-lg">
-          <img
-            src={profilePic}
-            alt="Nuno Santos, Product Designer"
-            className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-300 motion-reduce:transition-none"
-          />
-        </div>
-
-        {/* Right: Text content */}
-        <div className="space-y-4">
-          <h2 className="text-2xl font-normal tracking-tight text-foreground">
-            I build flows that close loops and systems that earn trust.
-          </h2>
-          <div className="space-y-2 text-sm text-muted-foreground">
-            <p><span className="font-medium text-foreground">Role:</span> Product Designer</p>
-            <p><span className="font-medium text-foreground">Company:</span> Freelance</p>
-            <p><span className="font-medium text-foreground">Location:</span> Lisbon, Portugal</p>
-          </div>
-          <button
-            onClick={() => document.getElementById('work-section')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-block mt-4 px-5 py-2 text-sm font-medium bg-foreground text-background rounded-full hover:translate-x-[1px] transition-transform duration-150 motion-reduce:transition-none min-w-[24px] min-h-[24px] focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+    <section className="py-16 px-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="flex items-center gap-8">
+          {/* Small grayscale photo - left aligned */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="flex-shrink-0"
           >
-            View Work
-          </button>
+            <div className="w-24 h-24 rounded-full overflow-hidden">
+              <img
+                src={profilePicture}
+                alt="Nuno Santos"
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </div>
+          </motion.div>
+
+          {/* One short line */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
+            className="text-xl md:text-2xl font-normal text-foreground leading-relaxed"
+          >
+            I build flows that close loops and systems that earn trust.
+          </motion.p>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
