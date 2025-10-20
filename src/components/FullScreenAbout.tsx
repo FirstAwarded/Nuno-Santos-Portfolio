@@ -21,16 +21,16 @@ export const FullScreenAbout = () => {
       />
 
       <div className="max-w-6xl mx-auto w-full relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Left: Portrait/workspace */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="flex-1 lg:flex-[0.5]"
+            className="flex-[0.5]"
           >
-            <div className="w-64 h-80 sm:w-80 sm:h-96 rounded-xl overflow-hidden border border-white/10 mx-auto">
+            <div className="w-80 h-96 rounded-xl overflow-hidden border border-white/10">
               <img
                 src={profilePicture}
                 alt="Nuno Santos"
@@ -45,13 +45,13 @@ export const FullScreenAbout = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-            className="flex-1 lg:flex-[0.5] space-y-6 text-[#eaeaea] text-center lg:text-left"
+            className="flex-[0.5] space-y-6 text-[#eaeaea]"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight leading-relaxed mb-6 lg:mb-8">
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight leading-relaxed mb-8">
               About
             </h2>
             
-            <div className="space-y-5 text-sm sm:text-base leading-relaxed text-[#eaeaea]/80">
+            <div className="space-y-5 text-base leading-relaxed text-[#eaeaea]/80">
               <p>
                 I design systems that translate complexity into confidence. Whether it's enterprise workflows, 
                 research platforms, or consumer apps, I focus on clarity over decoration.

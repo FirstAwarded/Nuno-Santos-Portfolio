@@ -17,7 +17,7 @@ export const FullScreenContact = () => {
       className="h-screen flex items-center justify-center px-6 snap-start snap-always relative z-30"
       style={{ backgroundColor: '#121212' }}
     >
-      <div className="max-w-3xl mx-auto text-center px-4">
+      <div className="max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,9 +26,9 @@ export const FullScreenContact = () => {
           className="space-y-8"
         >
           <div className="space-y-4 text-[#eaeaea]">
-            <p className="text-2xl sm:text-3xl md:text-4xl font-light tracking-tight inline-flex flex-wrap items-center justify-center gap-2">
+            <p className="text-3xl md:text-4xl font-light tracking-tight inline-flex items-center justify-center gap-2">
               Let's talk design systems, workflows, or tools
-              <span className={`inline-block w-[2px] h-6 sm:h-8 bg-[#a6c48a] transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
+              <span className={`inline-block w-[2px] h-8 bg-[#a6c48a] transition-opacity duration-100 ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
             </p>
           </div>
 
@@ -41,7 +41,7 @@ export const FullScreenContact = () => {
           >
             <a
               href="mailto:nunorgsantosdesigner@gmail.com"
-              className="inline-block border border-[#a6c48a]/30 text-[#eaeaea] px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-medium transition-all duration-200 hover:border-[#bcc9a4] hover:translate-x-[2px] hover:bg-[#a6c48a]/10 break-all"
+              className="inline-block border border-[#a6c48a]/30 text-[#eaeaea] px-8 py-3 rounded-full text-base font-medium transition-all duration-200 hover:border-[#bcc9a4] hover:translate-x-[2px] hover:bg-[#a6c48a]/10"
             >
               nunorgsantosdesigner@gmail.com
             </a>
