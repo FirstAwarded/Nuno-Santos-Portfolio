@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 import profilePicture from "@/assets/profilepicture.jpeg";
+import { MeshBackground } from "./MeshBackground";
 
 export const GlassMeshHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,19 +32,9 @@ export const GlassMeshHero = () => {
       id="hero" 
       className="relative h-screen flex items-center overflow-hidden snap-start snap-always"
     >
-      {/* Animated mesh gradient background */}
-      <div className="absolute inset-0 -z-20 animate-mesh-drift">
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: `
-              radial-gradient(at 30% 40%, #2a2a2a 0%, transparent 60%),
-              radial-gradient(at 70% 60%, #1a1a1a 0%, transparent 60%),
-              #0e0e0e
-            `,
-            backgroundSize: '200% 200%',
-          }}
-        />
+      {/* Animated mesh background */}
+      <div className="absolute inset-0 -z-20 bg-[#0e0e0e]">
+        <MeshBackground />
       </div>
 
       {/* Glass panel container - split layout */}
@@ -51,12 +42,12 @@ export const GlassMeshHero = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={isLoaded ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-        className="glass-panel-fallout max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-12 px-[10%] py-[12%]"
+        className="glass-panel-fallout max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12 px-6 sm:px-8 lg:px-[10%] py-8 sm:py-12 lg:py-[12%]"
       >
         {/* Left: Content (60%) */}
-        <div className="flex-[0.6] space-y-8">
+        <div className="flex-1 lg:flex-[0.6] space-y-6 lg:space-y-8 text-center lg:text-left">
           <motion.h1
-            className="text-[3.5rem] lg:text-[4rem] font-normal tracking-tight leading-[1.1] text-[#eaeaea]"
+            className="text-3xl sm:text-4xl lg:text-[4rem] font-normal tracking-tight leading-[1.1] text-[#eaeaea]"
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
@@ -66,7 +57,7 @@ export const GlassMeshHero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-[1.375rem] font-light text-[#eaeaea]/80 max-w-[480px]"
+            className="text-lg sm:text-xl lg:text-[1.375rem] font-light text-[#eaeaea]/80 max-w-[480px] mx-auto lg:mx-0"
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.35, duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
@@ -82,7 +73,7 @@ export const GlassMeshHero = () => {
           >
             <a
               href="#work"
-              className="inline-block text-base uppercase tracking-wider font-medium text-[#eaeaea] border border-[#a6c48a]/30 px-8 py-3 rounded-full transition-all duration-300 hover:border-[#bcc9a4] hover:bg-[#a6c48a]/10 hover:translate-x-[2px]"
+              className="inline-block text-sm sm:text-base uppercase tracking-wider font-medium text-[#eaeaea] border border-[#a6c48a]/30 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full transition-all duration-300 hover:border-[#bcc9a4] hover:bg-[#a6c48a]/10 hover:translate-x-[2px]"
               style={{ letterSpacing: '1px' }}
             >
               View my work →
@@ -92,7 +83,7 @@ export const GlassMeshHero = () => {
 
         {/* Right: Portrait (40%) */}
         <motion.div
-          className="flex-[0.4] relative"
+          className="flex-1 lg:flex-[0.4] relative"
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isLoaded ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.4, duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
@@ -100,7 +91,7 @@ export const GlassMeshHero = () => {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Atomic icon decoration */}
-          <div className="absolute -top-6 -right-6 w-12 h-12 opacity-5 pointer-events-none">
+          <div className="absolute -top-4 -right-4 lg:-top-6 lg:-right-6 w-10 h-10 lg:w-12 lg:h-12 opacity-5 pointer-events-none">
             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="24" cy="24" r="3" fill="white"/>
               <circle cx="24" cy="24" r="12" stroke="white" strokeWidth="1"/>
@@ -109,7 +100,7 @@ export const GlassMeshHero = () => {
           </div>
 
           <motion.div
-            className="relative w-72 h-96 rounded-2xl overflow-hidden"
+            className="relative w-64 h-80 sm:w-72 sm:h-96 rounded-2xl overflow-hidden mx-auto"
             style={{
               rotateX: portraitRotateX,
               rotateY: portraitRotateY,
